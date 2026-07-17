@@ -1,0 +1,244 @@
+generator client {
+  provider      = "prisma-client"
+  output        = "../src/generated"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+//  ============================ ENUMS ==============================
+
+//  ============================ USERS / ROLES / ORG ==============================
+
+model User {
+  id               String         @id @default(uuid()) @db.Uuid
+  code             String?        @unique
+  email            String         @unique
+  phoneNo          String?        @unique
+  passwordHash     String?
+  passwordChangeAt DateTime?
+  avatar           String?
+  location         String?
+  active           Boolean        @default(true)
+  isOnboarded      Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  creator          User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
+  createdBy        String?        @db.Uuid
+  createdUsers     User[]         @relation("UserCreatedBy")
+  activityLogs     ActivityLog[]
+  sessions         Session[]
+  createdRoles     Role[]         @relation("RoleCreatedBy")
+  organization     Organization[]
+  membership       Membership[]
+  token            Token[]
+  TokenCreatedBy   Token[]        @relation("TokenCreatedBy")
+  name             String
+  emailVerified    Boolean        @default(false)
+  image            String?
+  accounts         Account[]
+
+  @@index([createdBy])
+  @@index([active])
+  @@index([isOnboarded])
+  @@map("user")
+}
+
+model Organization {
+  id          String        @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  teamSize    Int?
+  slug        String?       @unique
+  code        String        @unique
+  type        String?
+  active      Boolean       @default(true)
+  logo        String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        User?         @relation(fields: [createdBy], references: [id])
+  createdBy   String        @db.Uuid
+  membership  Membership[]
+  role        Role[]
+  tokens      Token[]
+  auditLogs   ActivityLog[]
+
+  @@index([createdBy])
+  @@index([active])
+}
+
+model Membership {
+  id             String        @id @default(uuid()) @db.Uuid
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String        @db.Uuid
+  user           User?         @relation(fields: [userId], references: [id])
+  userId         String        @db.Uuid
+  role           Role?         @relation(fields: [roleId], references: [id])
+  roleId         String        @db.Uuid
+  createdAt      DateTime      @default(now())
+  isSystem       Boolean       @default(false)
+
+  @@unique([organizationId, userId])
+  @@index([roleId])
+}
+
+model Role {
+  id             String        @id @default(uuid()) @db.Uuid
+  code           String        @unique
+  name           String
+  description    String?
+  permissions    Json
+  active         Boolean       @default(true)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  creator        User?         @relation("RoleCreatedBy", fields: [createdBy], references: [id])
+  createdBy      String        @db.Uuid
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String        @db.Uuid
+  isSystem       Boolean       @default(false)
+  // assignedProjects AssignedProject[]
+  membership     Membership[]
+  tokens         Token[]
+
+  @@index([organizationId])
+  @@index([active])
+}
+
+enum TokenType {
+  INVITE_USER
+  RESET_PASSWORD
+  CHANGE_EMAIL
+  CHANGE_USERNAME
+  VERIFY_EMAIL
+}
+
+enum TokeStatus {
+  PENDING
+  USED
+  EXPIRED
+  REVOKED
+}
+
+model Token {
+  id             String        @id @default(uuid())
+  email          String
+  token          String        @unique
+  type           TokenType
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?       @db.Uuid
+  role           Role?         @relation(fields: [roleId], references: [id])
+  roleId         String?       @db.Uuid
+  status         TokeStatus    @default(PENDING)
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  user           User?         @relation(fields: [userId], references: [id])
+  userId         String?       @db.Uuid
+  TokenCreatedBy User?         @relation("TokenCreatedBy", fields: [createdBy], references: [id])
+  createdBy      String        @db.Uuid
+  meteData       Json?
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([status])
+}
+
+//  ============================ ACTIVITY / SESSIONS ==============================
+
+enum ActorType {
+  USER
+  SYSTEM
+  API_KEY
+  SUPPORT_AGENT
+}
+
+enum LogSeverity {
+  INFO
+  WARN
+  ERROR
+  DEBUG
+}
+
+enum EntryType {
+  TICKET
+  ORGANIZATION
+  USER
+  AUTH
+  ROLE
+}
+
+model ActivityLog {
+  id             String        @id @default(uuid()) @db.Uuid
+  createdAt      DateTime      @default(now())
+  actorId        String?       @db.Uuid
+  actorType      ActorType     @default(USER)
+  actor          User?         @relation(fields: [actorId], references: [id])
+  event          String // e.g., "ticket.status_updated"
+  severity       LogSeverity   @default(INFO)
+  entityType     EntryType // e.g., "TICKET", "ORGANIZATION", "USER"
+  entityId       String?       @db.Uuid
+  changes        Json? // { "status": { "from": "OPEN", "to": "CLOSED" } }
+  message        String?       @db.Text
+  metadata       Json? // Extra context like "reason" or "source_platform"
+  ipAddress      String?       @db.Inet
+  userAgent      String?       @db.Text
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String?       @db.Uuid
+
+  // Indexes for high-speed retrieval
+  @@index([organizationId, createdAt(sort: Desc)])
+  @@index([entityType, entityId])
+  @@index([actorId])
+}
+
+model Session {
+  id        String   @id
+  userId    String   @db.Uuid
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id])
+
+  token     String
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String    @db.Uuid
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}

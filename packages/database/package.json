@@ -1,0 +1,44 @@
+{
+  "name": "@org/database",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@org/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "prisma generate && tsc -b",
+    "dev": "tsc -w",
+    "setup": "tsx ./src/setup-rls-role.ts",
+    "push": " prisma generate && prisma db push",
+    "seedAdmin": "ts-node prisma/seed.ts --admin",
+    "deploy": "prisma migrate deploy",
+    "reset": "prisma migrate reset",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate",
+    "setup-role": "tsx ./src/lib/setup-rls-role.ts"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@org/constants": "workspace:*",
+    "@org/utils": "workspace:*",
+    "@org/zod": "workspace:*",
+    "@prisma/adapter-pg": "^7.4.2",
+    "@prisma/client": "^7.4.2",
+    "dotenv": "^17.3.1",
+    "prisma": "^7.4.2",
+    "tslib": "^2.3.0",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.2",
+    "zod": "^4.3.6"
+  }
+}

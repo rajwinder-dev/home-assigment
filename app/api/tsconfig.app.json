@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node", "express"],
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
+    "emitDeclarationOnly": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs"],
+  "references": [
+    {
+      "path": "../../packages/zod/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/utils/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/database/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/constants/tsconfig.lib.json"
+    }
+  ]
+}

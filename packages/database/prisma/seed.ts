@@ -1,0 +1,48 @@
+import { prisma } from "../src/lib/prismaClient.js";
+import { seedAgents } from "../src/lib/seed/agent.seed.js";
+import { seedMembers } from "../src/lib/seed/membership.seed.js";
+import { seedOrganizations } from "../src/lib/seed/organization.seed.js";
+import { seedUsers } from "../src/lib/seed/users.seed.js";
+const seedConfig = {
+  usersCount: 100,
+  ownersCount: 20,
+  maxOrg: 3,
+  maxGroupsPerOrg: 3,
+  maxQueuePerGroup: 4,
+};
+export class seedData {
+  static async updateFakeData() {
+    await this.clearData();
+    const users = await seedUsers(seedConfig.usersCount);
+    await seedOrganizations(users.splice(0, seedConfig.ownersCount), seedConfig.maxOrg);
+    await seedMembers(users.splice(seedConfig.ownersCount + 1, seedConfig.usersCount));
+    await seedAgents();
+  }
+  static async createOnlyAdmin() {
+    console.log("not done");
+  }
+
+  static async clearData() {
+    await prisma.$queryRaw`TRUNCATE TABLE "User" CASCADE;`;
+  }
+}
+const args = process.argv.slice(2);
+async function main() {
+  if (args.includes("--clear")) {
+    return seedData.clearData();
+  }
+  if (args.includes("--admin")) {
+    return seedData.createOnlyAdmin();
+  }
+  return seedData.updateFakeData();
+}
+
+// * run main script
+main()
+  .catch((e) => {
+    console.error("❌ Seed failed:", e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
