@@ -68,7 +68,6 @@
     "@opentelemetry/api": "^1.9.1",
     "@org/constants": "workspace:*",
     "@org/database": "workspace:*",
-    "@org/email-providers": "workspace:*",
     "@org/utils": "workspace:*",
     "@org/zod": "workspace:*",
     "@sentry/node": "^10.65.0",

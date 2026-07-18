@@ -8,42 +8,38 @@ datasource db {
   provider = "postgresql"
 }
 
-//  ============================ ENUMS ==============================
-
 //  ============================ USERS / ROLES / ORG ==============================
 
 model User {
-  id               String         @id @default(uuid()) @db.Uuid
-  code             String?        @unique
-  email            String         @unique
-  phoneNo          String?        @unique
-  passwordHash     String?
-  passwordChangeAt DateTime?
-  avatar           String?
-  location         String?
-  active           Boolean        @default(true)
-  isOnboarded      Boolean        @default(false)
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
-  creator          User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
-  createdBy        String?        @db.Uuid
-  createdUsers     User[]         @relation("UserCreatedBy")
-  activityLogs     ActivityLog[]
-  sessions         Session[]
-  createdRoles     Role[]         @relation("RoleCreatedBy")
-  organization     Organization[]
-  membership       Membership[]
-  token            Token[]
-  TokenCreatedBy   Token[]        @relation("TokenCreatedBy")
-  name             String
-  emailVerified    Boolean        @default(false)
-  image            String?
-  accounts         Account[]
-  depertment       Department[]
+  id              String         @id @default(uuid()) @db.Uuid
+  code            String?        @unique
+  email           String         @unique
+  phoneNo         String?        @unique
+  avatar          String?
+  location        String?
+  active          Boolean        @default(true)
+  gander          String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  creator         User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
+  createdBy       String?        @db.Uuid
+  createdUsers    User[]         @relation("UserCreatedBy")
+  activityLogs    ActivityLog[]
+  sessions        Session[]
+  createdRoles    Role[]         @relation("RoleCreatedBy")
+  organization    Organization[]
+  membership      Membership[]
+  token           Token[]
+  TokenCreatedBy  Token[]        @relation("TokenCreatedBy")
+  name            String
+  emailVerified   Boolean        @default(false)
+  image           String?
+  accounts        Account[]
+  departments     Department[]
+  reportingManger Membership[]   @relation("repotingManager")
 
   @@index([createdBy])
   @@index([active])
-  @@index([isOnboarded])
   @@map("user")
 }
 
@@ -74,13 +70,21 @@ model Organization {
 model Membership {
   id             String        @id @default(uuid()) @db.Uuid
   organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId String        @db.Uuid
+  organizationId String       @db.Uuid
   user           User?         @relation(fields: [userId], references: [id])
   userId         String        @db.Uuid
+  repotingManger User?         @relation("repotingManager", fields: [managerId], references: [id])
+  managerId      String?       @db.Uuid
   role           Role?         @relation(fields: [roleId], references: [id])
   roleId         String        @db.Uuid
+  department     Department?   @relation(fields: [departmentId], references: [id])
+  departmentId   String?        @db.Uuid
   createdAt      DateTime      @default(now())
-  isSystem       Boolean       @default(false)
+  designation    String?
+  salary         Float?      
+  joiningDate    DateTime?
+
+  isSystem Boolean @default(false)
 
   @@unique([organizationId, userId])
   @@index([roleId])
@@ -120,6 +124,10 @@ model Department {
   organizationId String?       @db.Uuid
   user           User?         @relation(fields: [createdBy], references: [id])
   createdBy      String?       @db.Uuid
+  memberships    Membership[]
+
+  @@index([organizationId])
+  @@index([active])
 }
 
 enum TokenType {

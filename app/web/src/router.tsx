@@ -9,6 +9,9 @@ import ForgetPasswordPage from './features/auth/pages/ForgetPasswordPage';
 import ResetPasswordPage from './features/auth/pages/ResetPasswordPage';
 import InviteMemberPage from './features/members/components/InviteMemberPage';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { DepartmentPage } from './features/department/DepartmentPage';
+import EmployeePage from './features/employees/EmployeePage';
+import { CreateEmployeePage } from './features/employees/CreateEmployeePage';
 
 const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
 const OrganizationPage = lazy(
@@ -90,7 +93,9 @@ const router = createBrowserRouter([
               { index: true, element: <DashboardPage /> },
               { path: 'rbac', element: <RolePage /> },
               { path: 'activity', element: <ActivityPage /> },
-              { path: 'employee', element: <MembersPage /> },
+              { path: 'department', element: <DepartmentPage /> },
+              { path: 'employee', element: <EmployeePage /> },
+              { path: 'employee/create', element: <CreateEmployeePage /> },
               {
                 path: 'setting',
                 element: <SettingsLayout />,

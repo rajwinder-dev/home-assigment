@@ -5,4 +5,5 @@ export * from "./features/members/index.js"
 export * from "./features/organization/index.js"
 export * from "./features/role/index.js"
 export * from "./features/users/index.js"
-
+export * from "./features/department/index.js"
+export * from "./features/employee/index.js"

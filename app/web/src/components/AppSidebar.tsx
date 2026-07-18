@@ -20,7 +20,12 @@ const navMainItems = [
     title: 'Dashboard',
     url: '/',
     icon: <HugeiconsIcon icon={DashboardSquare01Icon} strokeWidth={2} />,
+  },  {
+    title: 'Departments',
+    url: '/department',
+    icon: <HugeiconsIcon icon={DashboardSquare01Icon} strokeWidth={2} />,
   },
+
   {
     title: 'Employees',
     url: '/employee',

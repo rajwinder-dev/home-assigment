@@ -7,7 +7,7 @@ export * from "./lib/member.zod.js";
 export * from "./lib/organization.zod.js";
 export * from "./lib/permissions.zod.js";
 export * from "./lib/role.zod.js";
-export * from "./lib/team.zod.js";
+export * from "./lib/employee.zod.js";
 export * from "./lib/token.zod.js";
 export * from "./lib/user.zod.js";
 export * from "./lib/department.zod.js";

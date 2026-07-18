@@ -84,12 +84,10 @@ export const UserScalarFieldEnum = {
   code: 'code',
   email: 'email',
   phoneNo: 'phoneNo',
-  passwordHash: 'passwordHash',
-  passwordChangeAt: 'passwordChangeAt',
   avatar: 'avatar',
   location: 'location',
   active: 'active',
-  isOnboarded: 'isOnboarded',
+  gander: 'gander',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
@@ -123,8 +121,13 @@ export const MembershipScalarFieldEnum = {
   id: 'id',
   organizationId: 'organizationId',
   userId: 'userId',
+  managerId: 'managerId',
   roleId: 'roleId',
+  departmentId: 'departmentId',
   createdAt: 'createdAt',
+  designation: 'designation',
+  salary: 'salary',
+  joiningDate: 'joiningDate',
   isSystem: 'isSystem'
 } as const
 

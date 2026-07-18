@@ -29,12 +29,10 @@ export type UserMinAggregateOutputType = {
   code: string | null
   email: string | null
   phoneNo: string | null
-  passwordHash: string | null
-  passwordChangeAt: Date | null
   avatar: string | null
   location: string | null
   active: boolean | null
-  isOnboarded: boolean | null
+  gander: string | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
@@ -48,12 +46,10 @@ export type UserMaxAggregateOutputType = {
   code: string | null
   email: string | null
   phoneNo: string | null
-  passwordHash: string | null
-  passwordChangeAt: Date | null
   avatar: string | null
   location: string | null
   active: boolean | null
-  isOnboarded: boolean | null
+  gander: string | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
@@ -67,12 +63,10 @@ export type UserCountAggregateOutputType = {
   code: number
   email: number
   phoneNo: number
-  passwordHash: number
-  passwordChangeAt: number
   avatar: number
   location: number
   active: number
-  isOnboarded: number
+  gander: number
   createdAt: number
   updatedAt: number
   createdBy: number
@@ -88,12 +82,10 @@ export type UserMinAggregateInputType = {
   code?: true
   email?: true
   phoneNo?: true
-  passwordHash?: true
-  passwordChangeAt?: true
   avatar?: true
   location?: true
   active?: true
-  isOnboarded?: true
+  gander?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -107,12 +99,10 @@ export type UserMaxAggregateInputType = {
   code?: true
   email?: true
   phoneNo?: true
-  passwordHash?: true
-  passwordChangeAt?: true
   avatar?: true
   location?: true
   active?: true
-  isOnboarded?: true
+  gander?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -126,12 +116,10 @@ export type UserCountAggregateInputType = {
   code?: true
   email?: true
   phoneNo?: true
-  passwordHash?: true
-  passwordChangeAt?: true
   avatar?: true
   location?: true
   active?: true
-  isOnboarded?: true
+  gander?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -218,12 +206,10 @@ export type UserGroupByOutputType = {
   code: string | null
   email: string
   phoneNo: string | null
-  passwordHash: string | null
-  passwordChangeAt: Date | null
   avatar: string | null
   location: string | null
   active: boolean
-  isOnboarded: boolean
+  gander: string | null
   createdAt: Date
   updatedAt: Date
   createdBy: string | null
@@ -258,12 +244,10 @@ export type UserWhereInput = {
   code?: Prisma.StringNullableFilter<"User"> | string | null
   email?: Prisma.StringFilter<"User"> | string
   phoneNo?: Prisma.StringNullableFilter<"User"> | string | null
-  passwordHash?: Prisma.StringNullableFilter<"User"> | string | null
-  passwordChangeAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  isOnboarded?: Prisma.BoolFilter<"User"> | boolean
+  gander?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -280,7 +264,8 @@ export type UserWhereInput = {
   token?: Prisma.TokenListRelationFilter
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
-  depertment?: Prisma.DepartmentListRelationFilter
+  departments?: Prisma.DepartmentListRelationFilter
+  reportingManger?: Prisma.MembershipListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -288,12 +273,10 @@ export type UserOrderByWithRelationInput = {
   code?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   phoneNo?: Prisma.SortOrderInput | Prisma.SortOrder
-  passwordHash?: Prisma.SortOrderInput | Prisma.SortOrder
-  passwordChangeAt?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
-  isOnboarded?: Prisma.SortOrder
+  gander?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -310,7 +293,8 @@ export type UserOrderByWithRelationInput = {
   token?: Prisma.TokenOrderByRelationAggregateInput
   TokenCreatedBy?: Prisma.TokenOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
-  depertment?: Prisma.DepartmentOrderByRelationAggregateInput
+  departments?: Prisma.DepartmentOrderByRelationAggregateInput
+  reportingManger?: Prisma.MembershipOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -321,12 +305,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  passwordHash?: Prisma.StringNullableFilter<"User"> | string | null
-  passwordChangeAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  isOnboarded?: Prisma.BoolFilter<"User"> | boolean
+  gander?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -343,7 +325,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   token?: Prisma.TokenListRelationFilter
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
-  depertment?: Prisma.DepartmentListRelationFilter
+  departments?: Prisma.DepartmentListRelationFilter
+  reportingManger?: Prisma.MembershipListRelationFilter
 }, "id" | "code" | "email" | "phoneNo">
 
 export type UserOrderByWithAggregationInput = {
@@ -351,12 +334,10 @@ export type UserOrderByWithAggregationInput = {
   code?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   phoneNo?: Prisma.SortOrderInput | Prisma.SortOrder
-  passwordHash?: Prisma.SortOrderInput | Prisma.SortOrder
-  passwordChangeAt?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
-  isOnboarded?: Prisma.SortOrder
+  gander?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -376,12 +357,10 @@ export type UserScalarWhereWithAggregatesInput = {
   code?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   phoneNo?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  passwordHash?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  passwordChangeAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  isOnboarded?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  gander?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableWithAggregatesFilter<"User"> | string | null
@@ -395,12 +374,10 @@ export type UserCreateInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -416,7 +393,8 @@ export type UserCreateInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -424,12 +402,10 @@ export type UserUncheckedCreateInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -445,7 +421,8 @@ export type UserUncheckedCreateInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUpdateInput = {
@@ -453,12 +430,10 @@ export type UserUpdateInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -474,7 +449,8 @@ export type UserUpdateInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -482,12 +458,10 @@ export type UserUncheckedUpdateInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -503,7 +477,8 @@ export type UserUncheckedUpdateInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -511,12 +486,10 @@ export type UserCreateManyInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -530,12 +503,10 @@ export type UserUpdateManyMutationInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -548,12 +519,10 @@ export type UserUncheckedUpdateManyInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -582,12 +551,10 @@ export type UserCountOrderByAggregateInput = {
   code?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phoneNo?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
-  passwordChangeAt?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  isOnboarded?: Prisma.SortOrder
+  gander?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -601,12 +568,10 @@ export type UserMaxOrderByAggregateInput = {
   code?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phoneNo?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
-  passwordChangeAt?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  isOnboarded?: Prisma.SortOrder
+  gander?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -620,12 +585,10 @@ export type UserMinOrderByAggregateInput = {
   code?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phoneNo?: Prisma.SortOrder
-  passwordHash?: Prisma.SortOrder
-  passwordChangeAt?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  isOnboarded?: Prisma.SortOrder
+  gander?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -665,10 +628,6 @@ export type StringFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -739,6 +698,12 @@ export type UserCreateNestedOneWithoutMembershipInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserCreateNestedOneWithoutReportingMangerInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportingMangerInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
 export type UserUpdateOneWithoutMembershipNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMembershipInput, Prisma.UserUncheckedCreateWithoutMembershipInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembershipInput
@@ -747,6 +712,16 @@ export type UserUpdateOneWithoutMembershipNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembershipInput, Prisma.UserUpdateWithoutMembershipInput>, Prisma.UserUncheckedUpdateWithoutMembershipInput>
+}
+
+export type UserUpdateOneWithoutReportingMangerNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportingMangerInput
+  upsert?: Prisma.UserUpsertWithoutReportingMangerInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportingMangerInput, Prisma.UserUpdateWithoutReportingMangerInput>, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
 }
 
 export type UserCreateNestedOneWithoutCreatedRolesInput = {
@@ -765,20 +740,20 @@ export type UserUpdateOneWithoutCreatedRolesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedRolesInput, Prisma.UserUpdateWithoutCreatedRolesInput>, Prisma.UserUncheckedUpdateWithoutCreatedRolesInput>
 }
 
-export type UserCreateNestedOneWithoutDepertmentInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepertmentInput
+export type UserCreateNestedOneWithoutDepartmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneWithoutDepertmentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepertmentInput
-  upsert?: Prisma.UserUpsertWithoutDepertmentInput
+export type UserUpdateOneWithoutDepartmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput
+  upsert?: Prisma.UserUpsertWithoutDepartmentsInput
   disconnect?: Prisma.UserWhereInput | boolean
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDepertmentInput, Prisma.UserUpdateWithoutDepertmentInput>, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDepartmentsInput, Prisma.UserUpdateWithoutDepartmentsInput>, Prisma.UserUncheckedUpdateWithoutDepartmentsInput>
 }
 
 export type UserCreateNestedOneWithoutTokenInput = {
@@ -862,12 +837,10 @@ export type UserCreateWithoutCreatedUsersInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -882,7 +855,8 @@ export type UserCreateWithoutCreatedUsersInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatedUsersInput = {
@@ -890,12 +864,10 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -910,7 +882,8 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -923,12 +896,10 @@ export type UserCreateWithoutCreatorInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -943,7 +914,8 @@ export type UserCreateWithoutCreatorInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatorInput = {
@@ -951,12 +923,10 @@ export type UserUncheckedCreateWithoutCreatorInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -971,7 +941,8 @@ export type UserUncheckedCreateWithoutCreatorInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatorInput = {
@@ -1000,12 +971,10 @@ export type UserUpdateWithoutCreatedUsersInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1020,7 +989,8 @@ export type UserUpdateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedUsersInput = {
@@ -1028,12 +998,10 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1048,7 +1016,8 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -1075,12 +1044,10 @@ export type UserScalarWhereInput = {
   code?: Prisma.StringNullableFilter<"User"> | string | null
   email?: Prisma.StringFilter<"User"> | string
   phoneNo?: Prisma.StringNullableFilter<"User"> | string | null
-  passwordHash?: Prisma.StringNullableFilter<"User"> | string | null
-  passwordChangeAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  isOnboarded?: Prisma.BoolFilter<"User"> | boolean
+  gander?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -1094,12 +1061,10 @@ export type UserCreateWithoutOrganizationInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1114,7 +1079,8 @@ export type UserCreateWithoutOrganizationInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationInput = {
@@ -1122,12 +1088,10 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1142,7 +1106,8 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationInput = {
@@ -1166,12 +1131,10 @@ export type UserUpdateWithoutOrganizationInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1186,7 +1149,8 @@ export type UserUpdateWithoutOrganizationInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationInput = {
@@ -1194,12 +1158,10 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1214,7 +1176,8 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutMembershipInput = {
@@ -1222,12 +1185,10 @@ export type UserCreateWithoutMembershipInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1242,7 +1203,8 @@ export type UserCreateWithoutMembershipInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutMembershipInput = {
@@ -1250,12 +1212,10 @@ export type UserUncheckedCreateWithoutMembershipInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1270,12 +1230,72 @@ export type UserUncheckedCreateWithoutMembershipInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutMembershipInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutMembershipInput, Prisma.UserUncheckedCreateWithoutMembershipInput>
+}
+
+export type UserCreateWithoutReportingMangerInput = {
+  id?: string
+  code?: string | null
+  email: string
+  phoneNo?: string | null
+  avatar?: string | null
+  location?: string | null
+  active?: boolean
+  gander?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  name: string
+  emailVerified?: boolean
+  image?: string | null
+  creator?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatorInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatorInput
+  organization?: Prisma.OrganizationCreateNestedManyWithoutUserInput
+  membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  token?: Prisma.TokenCreateNestedManyWithoutUserInput
+  TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReportingMangerInput = {
+  id?: string
+  code?: string | null
+  email: string
+  phoneNo?: string | null
+  avatar?: string | null
+  location?: string | null
+  active?: boolean
+  gander?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: string | null
+  name: string
+  emailVerified?: boolean
+  image?: string | null
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatorInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatorInput
+  organization?: Prisma.OrganizationUncheckedCreateNestedManyWithoutUserInput
+  membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReportingMangerInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
 }
 
 export type UserUpsertWithoutMembershipInput = {
@@ -1294,12 +1314,10 @@ export type UserUpdateWithoutMembershipInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1314,7 +1332,8 @@ export type UserUpdateWithoutMembershipInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipInput = {
@@ -1322,12 +1341,10 @@ export type UserUncheckedUpdateWithoutMembershipInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1342,7 +1359,73 @@ export type UserUncheckedUpdateWithoutMembershipInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
+}
+
+export type UserUpsertWithoutReportingMangerInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReportingMangerInput, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReportingMangerInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReportingMangerInput, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
+}
+
+export type UserUpdateWithoutReportingMangerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creator?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatorNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatorNestedInput
+  organization?: Prisma.OrganizationUpdateManyWithoutUserNestedInput
+  membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  token?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReportingMangerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatorNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatorNestedInput
+  organization?: Prisma.OrganizationUncheckedUpdateManyWithoutUserNestedInput
+  membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCreatedRolesInput = {
@@ -1350,12 +1433,10 @@ export type UserCreateWithoutCreatedRolesInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1370,7 +1451,8 @@ export type UserCreateWithoutCreatedRolesInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatedRolesInput = {
@@ -1378,12 +1460,10 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1398,7 +1478,8 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatedRolesInput = {
@@ -1422,12 +1503,10 @@ export type UserUpdateWithoutCreatedRolesInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1442,7 +1521,8 @@ export type UserUpdateWithoutCreatedRolesInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedRolesInput = {
@@ -1450,12 +1530,10 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1470,20 +1548,19 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
-export type UserCreateWithoutDepertmentInput = {
+export type UserCreateWithoutDepartmentsInput = {
   id?: string
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1499,19 +1576,18 @@ export type UserCreateWithoutDepertmentInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
-export type UserUncheckedCreateWithoutDepertmentInput = {
+export type UserUncheckedCreateWithoutDepartmentsInput = {
   id?: string
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1527,35 +1603,34 @@ export type UserUncheckedCreateWithoutDepertmentInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
-export type UserCreateOrConnectWithoutDepertmentInput = {
+export type UserCreateOrConnectWithoutDepartmentsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
 }
 
-export type UserUpsertWithoutDepertmentInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutDepertmentInput, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+export type UserUpsertWithoutDepartmentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDepartmentsInput, Prisma.UserUncheckedUpdateWithoutDepartmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutDepertmentInput = {
+export type UserUpdateToOneWithWhereWithoutDepartmentsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutDepertmentInput, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDepartmentsInput, Prisma.UserUncheckedUpdateWithoutDepartmentsInput>
 }
 
-export type UserUpdateWithoutDepertmentInput = {
+export type UserUpdateWithoutDepartmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1571,19 +1646,18 @@ export type UserUpdateWithoutDepertmentInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
-export type UserUncheckedUpdateWithoutDepertmentInput = {
+export type UserUncheckedUpdateWithoutDepartmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1599,6 +1673,7 @@ export type UserUncheckedUpdateWithoutDepertmentInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutTokenInput = {
@@ -1606,12 +1681,10 @@ export type UserCreateWithoutTokenInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1626,7 +1699,8 @@ export type UserCreateWithoutTokenInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutTokenInput = {
@@ -1634,12 +1708,10 @@ export type UserUncheckedCreateWithoutTokenInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1654,7 +1726,8 @@ export type UserUncheckedCreateWithoutTokenInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutTokenInput = {
@@ -1667,12 +1740,10 @@ export type UserCreateWithoutTokenCreatedByInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1687,7 +1758,8 @@ export type UserCreateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutTokenCreatedByInput = {
@@ -1695,12 +1767,10 @@ export type UserUncheckedCreateWithoutTokenCreatedByInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1715,7 +1785,8 @@ export type UserUncheckedCreateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutTokenCreatedByInput = {
@@ -1739,12 +1810,10 @@ export type UserUpdateWithoutTokenInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1759,7 +1828,8 @@ export type UserUpdateWithoutTokenInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenInput = {
@@ -1767,12 +1837,10 @@ export type UserUncheckedUpdateWithoutTokenInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1787,7 +1855,8 @@ export type UserUncheckedUpdateWithoutTokenInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUpsertWithoutTokenCreatedByInput = {
@@ -1806,12 +1875,10 @@ export type UserUpdateWithoutTokenCreatedByInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1826,7 +1893,8 @@ export type UserUpdateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
@@ -1834,12 +1902,10 @@ export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1854,7 +1920,8 @@ export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutActivityLogsInput = {
@@ -1862,12 +1929,10 @@ export type UserCreateWithoutActivityLogsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1882,7 +1947,8 @@ export type UserCreateWithoutActivityLogsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutActivityLogsInput = {
@@ -1890,12 +1956,10 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1910,7 +1974,8 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutActivityLogsInput = {
@@ -1934,12 +1999,10 @@ export type UserUpdateWithoutActivityLogsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1954,7 +2017,8 @@ export type UserUpdateWithoutActivityLogsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityLogsInput = {
@@ -1962,12 +2026,10 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1982,7 +2044,8 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -1990,12 +2053,10 @@ export type UserCreateWithoutSessionsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2010,7 +2071,8 @@ export type UserCreateWithoutSessionsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -2018,12 +2080,10 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -2038,7 +2098,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -2062,12 +2123,10 @@ export type UserUpdateWithoutSessionsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2082,7 +2141,8 @@ export type UserUpdateWithoutSessionsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -2090,12 +2150,10 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2110,7 +2168,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -2118,12 +2177,10 @@ export type UserCreateWithoutAccountsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2138,7 +2195,8 @@ export type UserCreateWithoutAccountsInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
-  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -2146,12 +2204,10 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -2166,7 +2222,8 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
-  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
+  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -2190,12 +2247,10 @@ export type UserUpdateWithoutAccountsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2210,7 +2265,8 @@ export type UserUpdateWithoutAccountsInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -2218,12 +2274,10 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2238,7 +2292,8 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateManyCreatorInput = {
@@ -2246,12 +2301,10 @@ export type UserCreateManyCreatorInput = {
   code?: string | null
   email: string
   phoneNo?: string | null
-  passwordHash?: string | null
-  passwordChangeAt?: Date | string | null
   avatar?: string | null
   location?: string | null
   active?: boolean
-  isOnboarded?: boolean
+  gander?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2264,12 +2317,10 @@ export type UserUpdateWithoutCreatorInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2284,7 +2335,8 @@ export type UserUpdateWithoutCreatorInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatorInput = {
@@ -2292,12 +2344,10 @@ export type UserUncheckedUpdateWithoutCreatorInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2312,7 +2362,8 @@ export type UserUncheckedUpdateWithoutCreatorInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCreatorInput = {
@@ -2320,12 +2371,10 @@ export type UserUncheckedUpdateManyWithoutCreatorInput = {
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2348,7 +2397,8 @@ export type UserCountOutputType = {
   token: number
   TokenCreatedBy: number
   accounts: number
-  depertment: number
+  departments: number
+  reportingManger: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2361,7 +2411,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   token?: boolean | UserCountOutputTypeCountTokenArgs
   TokenCreatedBy?: boolean | UserCountOutputTypeCountTokenCreatedByArgs
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-  depertment?: boolean | UserCountOutputTypeCountDepertmentArgs
+  departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
+  reportingManger?: boolean | UserCountOutputTypeCountReportingMangerArgs
 }
 
 /**
@@ -2440,8 +2491,15 @@ export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends runtime.Types.E
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountDepertmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountDepartmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.DepartmentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReportingMangerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MembershipWhereInput
 }
 
 
@@ -2450,12 +2508,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   code?: boolean
   email?: boolean
   phoneNo?: boolean
-  passwordHash?: boolean
-  passwordChangeAt?: boolean
   avatar?: boolean
   location?: boolean
   active?: boolean
-  isOnboarded?: boolean
+  gander?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2472,7 +2528,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   token?: boolean | Prisma.User$tokenArgs<ExtArgs>
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  depertment?: boolean | Prisma.User$depertmentArgs<ExtArgs>
+  departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
+  reportingManger?: boolean | Prisma.User$reportingMangerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2481,12 +2538,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   code?: boolean
   email?: boolean
   phoneNo?: boolean
-  passwordHash?: boolean
-  passwordChangeAt?: boolean
   avatar?: boolean
   location?: boolean
   active?: boolean
-  isOnboarded?: boolean
+  gander?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2501,12 +2556,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   code?: boolean
   email?: boolean
   phoneNo?: boolean
-  passwordHash?: boolean
-  passwordChangeAt?: boolean
   avatar?: boolean
   location?: boolean
   active?: boolean
-  isOnboarded?: boolean
+  gander?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2521,12 +2574,10 @@ export type UserSelectScalar = {
   code?: boolean
   email?: boolean
   phoneNo?: boolean
-  passwordHash?: boolean
-  passwordChangeAt?: boolean
   avatar?: boolean
   location?: boolean
   active?: boolean
-  isOnboarded?: boolean
+  gander?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2535,7 +2586,7 @@ export type UserSelectScalar = {
   image?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "email" | "phoneNo" | "passwordHash" | "passwordChangeAt" | "avatar" | "location" | "active" | "isOnboarded" | "createdAt" | "updatedAt" | "createdBy" | "name" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "email" | "phoneNo" | "avatar" | "location" | "active" | "gander" | "createdAt" | "updatedAt" | "createdBy" | "name" | "emailVerified" | "image", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.User$creatorArgs<ExtArgs>
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
@@ -2547,7 +2598,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   token?: boolean | Prisma.User$tokenArgs<ExtArgs>
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  depertment?: boolean | Prisma.User$depertmentArgs<ExtArgs>
+  departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
+  reportingManger?: boolean | Prisma.User$reportingMangerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2570,19 +2622,18 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     token: Prisma.$TokenPayload<ExtArgs>[]
     TokenCreatedBy: Prisma.$TokenPayload<ExtArgs>[]
     accounts: Prisma.$AccountPayload<ExtArgs>[]
-    depertment: Prisma.$DepartmentPayload<ExtArgs>[]
+    departments: Prisma.$DepartmentPayload<ExtArgs>[]
+    reportingManger: Prisma.$MembershipPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     code: string | null
     email: string
     phoneNo: string | null
-    passwordHash: string | null
-    passwordChangeAt: Date | null
     avatar: string | null
     location: string | null
     active: boolean
-    isOnboarded: boolean
+    gander: string | null
     createdAt: Date
     updatedAt: Date
     createdBy: string | null
@@ -2993,7 +3044,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   token<T extends Prisma.User$tokenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tokenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   TokenCreatedBy<T extends Prisma.User$TokenCreatedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TokenCreatedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  depertment<T extends Prisma.User$depertmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$depertmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  departments<T extends Prisma.User$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reportingManger<T extends Prisma.User$reportingMangerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportingMangerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3027,12 +3079,10 @@ export interface UserFieldRefs {
   readonly code: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly phoneNo: Prisma.FieldRef<"User", 'String'>
-  readonly passwordHash: Prisma.FieldRef<"User", 'String'>
-  readonly passwordChangeAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly avatar: Prisma.FieldRef<"User", 'String'>
   readonly location: Prisma.FieldRef<"User", 'String'>
   readonly active: Prisma.FieldRef<"User", 'Boolean'>
-  readonly isOnboarded: Prisma.FieldRef<"User", 'Boolean'>
+  readonly gander: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"User", 'String'>
@@ -3675,9 +3725,9 @@ export type User$accountsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * User.depertment
+ * User.departments
  */
-export type User$depertmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$departmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Department
    */
@@ -3696,6 +3746,30 @@ export type User$depertmentArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.DepartmentScalarFieldEnum | Prisma.DepartmentScalarFieldEnum[]
+}
+
+/**
+ * User.reportingManger
+ */
+export type User$reportingMangerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Membership
+   */
+  select?: Prisma.MembershipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Membership
+   */
+  omit?: Prisma.MembershipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MembershipInclude<ExtArgs> | null
+  where?: Prisma.MembershipWhereInput
+  orderBy?: Prisma.MembershipOrderByWithRelationInput | Prisma.MembershipOrderByWithRelationInput[]
+  cursor?: Prisma.MembershipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MembershipScalarFieldEnum | Prisma.MembershipScalarFieldEnum[]
 }
 
 /**

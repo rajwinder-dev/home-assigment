@@ -20,7 +20,7 @@ export const defaultRoles = [
   {
     name: 'Employee',
     description: 'working employee under employee',
-    permissions: { employee: ['view_self', 'edit_self'] },
+    permissions: { memeber: ['view_self', 'edit_self'] },
   },
   {
     name: 'Admin',

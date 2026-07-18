@@ -1,5 +1,6 @@
 import {
   ChangeMemberRoleInput,
+  CreateEmployeeInput,
   memberSchemaResponse,
 } from '@org/zod';
 import z from 'zod';
@@ -7,14 +8,23 @@ import { APIFeatures } from '../../core/utils/apiFeatures.js';
 import { catchAsync } from '../../core/utils/catchAsync.js';
 import response from '../../core/utils/response.js';
 import { prisma } from '@org/database';
+import { EmployeeService } from './employee.service.js';
 
-export class MemberController {
-  static getMembers = catchAsync(async (req, res, _next) => {
-    const { filterOptions, limit, offset } = new APIFeatures(req.query, {
-      ignore: ['queueId'],
-    })
+export class EmployeeController {
+  static createEmployee = catchAsync(async (req, res, _next) => {
+    const input = req.body as CreateEmployeeInput;
+    const data = await EmployeeService.creteEmployee({
+      input,
+      organizationId: req.organization.id,
+      createdBy: req.user.id,
+    });
+    response(res, data, 201);
+  });
+  static getAllEmployees = catchAsync(async (req, res, _next) => {
+    const { filterOptions, limit, offset } = new APIFeatures(req.query)
       .filter()
-      .pagination();
+      .pagination()
+      .search();
     const membership = await prisma.membership.findMany({
       where: {
         organizationId: req.organization.id,
@@ -25,6 +35,9 @@ export class MemberController {
         organizationId: true,
         id: true,
         createdAt: true,
+        salary: true,
+        designation: true,
+        joinginingDate: true,
         role: {
           select: {
             id: true,
@@ -59,6 +72,7 @@ export class MemberController {
         organizationId: item.organizationId,
       };
     });
+
     const total = await prisma.membership.count({
       where: {
         organizationId: req.organization.id,

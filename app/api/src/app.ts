@@ -22,7 +22,6 @@ import { toNodeHandler } from 'better-auth/node';
 import { DevMiddleware } from './core/middleware/devMiddleware.js';
 import ActivityRouter from './modules/activity/activity.routes.js';
 import dashboardRouter from './modules/dashboard/dashboard.route.js';
-import memberRouter from './modules/member/member.routes.js';
 import organizationRouter from './modules/organizations/organization.routes.js';
 import roleRouter from './modules/role/role.route.js';
 import tokenRoute from './modules/token/token.routes.js';
@@ -32,6 +31,7 @@ import { auth } from './lib/auth.js';
 import { configLogger } from './core/utils/logger.js';
 import { prisma } from '@org/database';
 import departmentRouter from './modules/department/department.routes.js';
+import employeeRouter from './modules/employee/employee.routes.js';
 
 export const app: Express = express();
 
@@ -85,7 +85,7 @@ app.use('/api/v1/department', departmentRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/role', roleRouter);
 app.use('/api/v1/dashboard', dashboardRouter);
-app.use('/api/v1/member', memberRouter);
+app.use('/api/v1/employee', employeeRouter);
 app.use('/api/v1/activity', ActivityRouter);
 app.use('/api/v1/lookup', lookupRouter);
 
