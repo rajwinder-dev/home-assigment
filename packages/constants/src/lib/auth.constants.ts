@@ -8,6 +8,7 @@ export const permissions = {
     'view_self',
     'edit_self',
   ],
+  depratment: ["create", "edit", "delete", "view"],
   activity: ['view'],
 } as const;
 
@@ -24,18 +25,7 @@ export const defaultRoles = [
   {
     name: 'Admin',
     description: 'admin with full access',
-    permissions: {
-      activity: ['view'],
-      employee: [
-        'create',
-        'edit',
-        'view',
-        'delete',
-        'assign',
-        'view_self',
-        'edit_self',
-      ],
-    },
+    permissions
   },
   {
     name: 'Manger',

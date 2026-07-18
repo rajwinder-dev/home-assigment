@@ -280,6 +280,7 @@ export type UserWhereInput = {
   token?: Prisma.TokenListRelationFilter
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
+  depertment?: Prisma.DepartmentListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -309,6 +310,7 @@ export type UserOrderByWithRelationInput = {
   token?: Prisma.TokenOrderByRelationAggregateInput
   TokenCreatedBy?: Prisma.TokenOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
+  depertment?: Prisma.DepartmentOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -341,6 +343,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   token?: Prisma.TokenListRelationFilter
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
+  depertment?: Prisma.DepartmentListRelationFilter
 }, "id" | "code" | "email" | "phoneNo">
 
 export type UserOrderByWithAggregationInput = {
@@ -413,6 +416,7 @@ export type UserCreateInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -441,6 +445,7 @@ export type UserUncheckedCreateInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -469,6 +474,7 @@ export type UserUpdateInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -497,6 +503,7 @@ export type UserUncheckedUpdateInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -758,6 +765,22 @@ export type UserUpdateOneWithoutCreatedRolesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedRolesInput, Prisma.UserUpdateWithoutCreatedRolesInput>, Prisma.UserUncheckedUpdateWithoutCreatedRolesInput>
 }
 
+export type UserCreateNestedOneWithoutDepertmentInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepertmentInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutDepertmentNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepertmentInput
+  upsert?: Prisma.UserUpsertWithoutDepertmentInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDepertmentInput, Prisma.UserUpdateWithoutDepertmentInput>, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
+}
+
 export type UserCreateNestedOneWithoutTokenInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutTokenInput, Prisma.UserUncheckedCreateWithoutTokenInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutTokenInput
@@ -859,6 +882,7 @@ export type UserCreateWithoutCreatedUsersInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatedUsersInput = {
@@ -886,6 +910,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -918,6 +943,7 @@ export type UserCreateWithoutCreatorInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatorInput = {
@@ -945,6 +971,7 @@ export type UserUncheckedCreateWithoutCreatorInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatorInput = {
@@ -993,6 +1020,7 @@ export type UserUpdateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedUsersInput = {
@@ -1020,6 +1048,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -1085,6 +1114,7 @@ export type UserCreateWithoutOrganizationInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationInput = {
@@ -1112,6 +1142,7 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationInput = {
@@ -1155,6 +1186,7 @@ export type UserUpdateWithoutOrganizationInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationInput = {
@@ -1182,6 +1214,7 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMembershipInput = {
@@ -1209,6 +1242,7 @@ export type UserCreateWithoutMembershipInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMembershipInput = {
@@ -1236,6 +1270,7 @@ export type UserUncheckedCreateWithoutMembershipInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMembershipInput = {
@@ -1279,6 +1314,7 @@ export type UserUpdateWithoutMembershipInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipInput = {
@@ -1306,6 +1342,7 @@ export type UserUncheckedUpdateWithoutMembershipInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCreatedRolesInput = {
@@ -1333,6 +1370,7 @@ export type UserCreateWithoutCreatedRolesInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatedRolesInput = {
@@ -1360,6 +1398,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedRolesInput = {
@@ -1403,6 +1442,7 @@ export type UserUpdateWithoutCreatedRolesInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedRolesInput = {
@@ -1425,6 +1465,135 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatorNestedInput
   activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  organization?: Prisma.OrganizationUncheckedUpdateManyWithoutUserNestedInput
+  membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
+  token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
+  TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDepertmentInput = {
+  id?: string
+  code?: string | null
+  email: string
+  phoneNo?: string | null
+  passwordHash?: string | null
+  passwordChangeAt?: Date | string | null
+  avatar?: string | null
+  location?: string | null
+  active?: boolean
+  isOnboarded?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  name: string
+  emailVerified?: boolean
+  image?: string | null
+  creator?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
+  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatorInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatorInput
+  organization?: Prisma.OrganizationCreateNestedManyWithoutUserInput
+  membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
+  token?: Prisma.TokenCreateNestedManyWithoutUserInput
+  TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutDepertmentInput = {
+  id?: string
+  code?: string | null
+  email: string
+  phoneNo?: string | null
+  passwordHash?: string | null
+  passwordChangeAt?: Date | string | null
+  avatar?: string | null
+  location?: string | null
+  active?: boolean
+  isOnboarded?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy?: string | null
+  name: string
+  emailVerified?: boolean
+  image?: string | null
+  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatorInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatorInput
+  organization?: Prisma.OrganizationUncheckedCreateNestedManyWithoutUserInput
+  membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
+  token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
+  TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutDepertmentInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+}
+
+export type UserUpsertWithoutDepertmentInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDepertmentInput, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepertmentInput, Prisma.UserUncheckedCreateWithoutDepertmentInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDepertmentInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDepertmentInput, Prisma.UserUncheckedUpdateWithoutDepertmentInput>
+}
+
+export type UserUpdateWithoutDepertmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creator?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
+  createdUsers?: Prisma.UserUpdateManyWithoutCreatorNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  createdRoles?: Prisma.RoleUpdateManyWithoutCreatorNestedInput
+  organization?: Prisma.OrganizationUpdateManyWithoutUserNestedInput
+  membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
+  token?: Prisma.TokenUpdateManyWithoutUserNestedInput
+  TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDepertmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordChangeAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnboarded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatorNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatorNestedInput
   organization?: Prisma.OrganizationUncheckedUpdateManyWithoutUserNestedInput
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1457,6 +1626,7 @@ export type UserCreateWithoutTokenInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTokenInput = {
@@ -1484,6 +1654,7 @@ export type UserUncheckedCreateWithoutTokenInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTokenInput = {
@@ -1516,6 +1687,7 @@ export type UserCreateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTokenCreatedByInput = {
@@ -1543,6 +1715,7 @@ export type UserUncheckedCreateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTokenCreatedByInput = {
@@ -1586,6 +1759,7 @@ export type UserUpdateWithoutTokenInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenInput = {
@@ -1613,6 +1787,7 @@ export type UserUncheckedUpdateWithoutTokenInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutTokenCreatedByInput = {
@@ -1651,6 +1826,7 @@ export type UserUpdateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
@@ -1678,6 +1854,7 @@ export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutActivityLogsInput = {
@@ -1705,6 +1882,7 @@ export type UserCreateWithoutActivityLogsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutActivityLogsInput = {
@@ -1732,6 +1910,7 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutActivityLogsInput = {
@@ -1775,6 +1954,7 @@ export type UserUpdateWithoutActivityLogsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityLogsInput = {
@@ -1802,6 +1982,7 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -1829,6 +2010,7 @@ export type UserCreateWithoutSessionsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1856,6 +2038,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1899,6 +2082,7 @@ export type UserUpdateWithoutSessionsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1926,6 +2110,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -1953,6 +2138,7 @@ export type UserCreateWithoutAccountsInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
+  depertment?: Prisma.DepartmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -1980,6 +2166,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
+  depertment?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -2023,6 +2210,7 @@ export type UserUpdateWithoutAccountsInput = {
   membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -2050,6 +2238,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyCreatorInput = {
@@ -2095,6 +2284,7 @@ export type UserUpdateWithoutCreatorInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatorInput = {
@@ -2122,6 +2312,7 @@ export type UserUncheckedUpdateWithoutCreatorInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  depertment?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCreatorInput = {
@@ -2157,6 +2348,7 @@ export type UserCountOutputType = {
   token: number
   TokenCreatedBy: number
   accounts: number
+  depertment: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2169,6 +2361,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   token?: boolean | UserCountOutputTypeCountTokenArgs
   TokenCreatedBy?: boolean | UserCountOutputTypeCountTokenCreatedByArgs
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+  depertment?: boolean | UserCountOutputTypeCountDepertmentArgs
 }
 
 /**
@@ -2244,6 +2437,13 @@ export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.AccountWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDepertmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DepartmentWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2272,6 +2472,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   token?: boolean | Prisma.User$tokenArgs<ExtArgs>
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
+  depertment?: boolean | Prisma.User$depertmentArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2346,6 +2547,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   token?: boolean | Prisma.User$tokenArgs<ExtArgs>
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
+  depertment?: boolean | Prisma.User$depertmentArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2368,6 +2570,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     token: Prisma.$TokenPayload<ExtArgs>[]
     TokenCreatedBy: Prisma.$TokenPayload<ExtArgs>[]
     accounts: Prisma.$AccountPayload<ExtArgs>[]
+    depertment: Prisma.$DepartmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2790,6 +2993,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   token<T extends Prisma.User$tokenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tokenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   TokenCreatedBy<T extends Prisma.User$TokenCreatedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TokenCreatedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  depertment<T extends Prisma.User$depertmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$depertmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3468,6 +3672,30 @@ export type User$accountsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.AccountScalarFieldEnum | Prisma.AccountScalarFieldEnum[]
+}
+
+/**
+ * User.depertment
+ */
+export type User$depertmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Department
+   */
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Department
+   */
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+  orderBy?: Prisma.DepartmentOrderByWithRelationInput | Prisma.DepartmentOrderByWithRelationInput[]
+  cursor?: Prisma.DepartmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DepartmentScalarFieldEnum | Prisma.DepartmentScalarFieldEnum[]
 }
 
 /**

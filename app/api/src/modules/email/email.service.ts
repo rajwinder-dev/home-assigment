@@ -7,14 +7,14 @@ export class EmailService {
     subject,
     template,
     data,
-    isSystemEmail,
+    isSystemEmail = true,
   }: {
-    organizationId: string;
+    organizationId?: string;
     to: string;
     subject: string;
-    template: string;
+    template: 'invite' | 'forgetPassword' | 'welcome';
     data: any;
-    isSystemEmail: true;
+    isSystemEmail?: boolean;
   }) => {
     // send email to queue  . replace with resend provider
     return await emailQueuePush({

@@ -31,6 +31,7 @@ import lookupRouter from './modules/lookup/lookup.routes.js';
 import { auth } from './lib/auth.js';
 import { configLogger } from './core/utils/logger.js';
 import { prisma } from '@org/database';
+import departmentRouter from './modules/department/department.routes.js';
 
 export const app: Express = express();
 
@@ -80,6 +81,7 @@ app.get('/health', async (req, res) => {
 
 app.use('/api/v1/token', tokenRoute);
 app.use('/api/v1/org', organizationRouter);
+app.use('/api/v1/department', departmentRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/role', roleRouter);
 app.use('/api/v1/dashboard', dashboardRouter);

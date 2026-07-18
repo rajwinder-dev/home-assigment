@@ -277,6 +277,7 @@ export type OrganizationWhereInput = {
   role?: Prisma.RoleListRelationFilter
   tokens?: Prisma.TokenListRelationFilter
   auditLogs?: Prisma.ActivityLogListRelationFilter
+  department?: Prisma.DepartmentListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -297,6 +298,7 @@ export type OrganizationOrderByWithRelationInput = {
   role?: Prisma.RoleOrderByRelationAggregateInput
   tokens?: Prisma.TokenOrderByRelationAggregateInput
   auditLogs?: Prisma.ActivityLogOrderByRelationAggregateInput
+  department?: Prisma.DepartmentOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -320,6 +322,7 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.RoleListRelationFilter
   tokens?: Prisma.TokenListRelationFilter
   auditLogs?: Prisma.ActivityLogListRelationFilter
+  department?: Prisma.DepartmentListRelationFilter
 }, "id" | "slug" | "code">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -377,6 +380,7 @@ export type OrganizationCreateInput = {
   role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -396,6 +400,7 @@ export type OrganizationUncheckedCreateInput = {
   role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -415,6 +420,7 @@ export type OrganizationUpdateInput = {
   role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -434,6 +440,7 @@ export type OrganizationUncheckedUpdateInput = {
   role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -630,6 +637,22 @@ export type OrganizationUpdateOneWithoutRoleNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutRoleInput, Prisma.OrganizationUpdateWithoutRoleInput>, Prisma.OrganizationUncheckedUpdateWithoutRoleInput>
 }
 
+export type OrganizationCreateNestedOneWithoutDepartmentInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutDepartmentInput, Prisma.OrganizationUncheckedCreateWithoutDepartmentInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutDepartmentInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneWithoutDepartmentNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutDepartmentInput, Prisma.OrganizationUncheckedCreateWithoutDepartmentInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutDepartmentInput
+  upsert?: Prisma.OrganizationUpsertWithoutDepartmentInput
+  disconnect?: Prisma.OrganizationWhereInput | boolean
+  delete?: Prisma.OrganizationWhereInput | boolean
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutDepartmentInput, Prisma.OrganizationUpdateWithoutDepartmentInput>, Prisma.OrganizationUncheckedUpdateWithoutDepartmentInput>
+}
+
 export type OrganizationCreateNestedOneWithoutTokensInput = {
   create?: Prisma.XOR<Prisma.OrganizationCreateWithoutTokensInput, Prisma.OrganizationUncheckedCreateWithoutTokensInput>
   connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutTokensInput
@@ -678,6 +701,7 @@ export type OrganizationCreateWithoutUserInput = {
   role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutUserInput = {
@@ -696,6 +720,7 @@ export type OrganizationUncheckedCreateWithoutUserInput = {
   role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutUserInput = {
@@ -758,6 +783,7 @@ export type OrganizationCreateWithoutMembershipInput = {
   role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembershipInput = {
@@ -776,6 +802,7 @@ export type OrganizationUncheckedCreateWithoutMembershipInput = {
   role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembershipInput = {
@@ -810,6 +837,7 @@ export type OrganizationUpdateWithoutMembershipInput = {
   role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembershipInput = {
@@ -828,6 +856,7 @@ export type OrganizationUncheckedUpdateWithoutMembershipInput = {
   role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutRoleInput = {
@@ -846,6 +875,7 @@ export type OrganizationCreateWithoutRoleInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutRoleInput = {
@@ -864,6 +894,7 @@ export type OrganizationUncheckedCreateWithoutRoleInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutRoleInput = {
@@ -898,6 +929,7 @@ export type OrganizationUpdateWithoutRoleInput = {
   membership?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutRoleInput = {
@@ -914,6 +946,99 @@ export type OrganizationUncheckedUpdateWithoutRoleInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutDepartmentInput = {
+  id?: string
+  name: string
+  description?: string | null
+  teamSize?: number | null
+  slug?: string | null
+  code: string
+  type?: string | null
+  active?: boolean
+  logo?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutOrganizationInput
+  membership?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
+  tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
+  auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutDepartmentInput = {
+  id?: string
+  name: string
+  description?: string | null
+  teamSize?: number | null
+  slug?: string | null
+  code: string
+  type?: string | null
+  active?: boolean
+  logo?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  createdBy: string
+  membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
+  tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
+  auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutDepartmentInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutDepartmentInput, Prisma.OrganizationUncheckedCreateWithoutDepartmentInput>
+}
+
+export type OrganizationUpsertWithoutDepartmentInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutDepartmentInput, Prisma.OrganizationUncheckedUpdateWithoutDepartmentInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutDepartmentInput, Prisma.OrganizationUncheckedCreateWithoutDepartmentInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutDepartmentInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutDepartmentInput, Prisma.OrganizationUncheckedUpdateWithoutDepartmentInput>
+}
+
+export type OrganizationUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teamSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutOrganizationNestedInput
+  membership?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
+  tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
+  auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutDepartmentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  teamSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdBy?: Prisma.StringFieldUpdateOperationsInput | string
+  membership?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
@@ -934,6 +1059,7 @@ export type OrganizationCreateWithoutTokensInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutTokensInput = {
@@ -952,6 +1078,7 @@ export type OrganizationUncheckedCreateWithoutTokensInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
   auditLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutTokensInput = {
@@ -986,6 +1113,7 @@ export type OrganizationUpdateWithoutTokensInput = {
   membership?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutTokensInput = {
@@ -1004,6 +1132,7 @@ export type OrganizationUncheckedUpdateWithoutTokensInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutAuditLogsInput = {
@@ -1022,6 +1151,7 @@ export type OrganizationCreateWithoutAuditLogsInput = {
   membership?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   role?: Prisma.RoleCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutAuditLogsInput = {
@@ -1040,6 +1170,7 @@ export type OrganizationUncheckedCreateWithoutAuditLogsInput = {
   membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   role?: Prisma.RoleUncheckedCreateNestedManyWithoutOrganizationInput
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutOrganizationInput
+  department?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutAuditLogsInput = {
@@ -1074,6 +1205,7 @@ export type OrganizationUpdateWithoutAuditLogsInput = {
   membership?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutAuditLogsInput = {
@@ -1092,6 +1224,7 @@ export type OrganizationUncheckedUpdateWithoutAuditLogsInput = {
   membership?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyUserInput = {
@@ -1124,6 +1257,7 @@ export type OrganizationUpdateWithoutUserInput = {
   role?: Prisma.RoleUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutUserInput = {
@@ -1142,6 +1276,7 @@ export type OrganizationUncheckedUpdateWithoutUserInput = {
   role?: Prisma.RoleUncheckedUpdateManyWithoutOrganizationNestedInput
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutOrganizationNestedInput
   auditLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  department?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateManyWithoutUserInput = {
@@ -1168,6 +1303,7 @@ export type OrganizationCountOutputType = {
   role: number
   tokens: number
   auditLogs: number
+  department: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1175,6 +1311,7 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   role?: boolean | OrganizationCountOutputTypeCountRoleArgs
   tokens?: boolean | OrganizationCountOutputTypeCountTokensArgs
   auditLogs?: boolean | OrganizationCountOutputTypeCountAuditLogsArgs
+  department?: boolean | OrganizationCountOutputTypeCountDepartmentArgs
 }
 
 /**
@@ -1215,6 +1352,13 @@ export type OrganizationCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtim
   where?: Prisma.ActivityLogWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountDepartmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DepartmentWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1234,6 +1378,7 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   role?: boolean | Prisma.Organization$roleArgs<ExtArgs>
   tokens?: boolean | Prisma.Organization$tokensArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Organization$auditLogsArgs<ExtArgs>
+  department?: boolean | Prisma.Organization$departmentArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -1291,6 +1436,7 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   role?: boolean | Prisma.Organization$roleArgs<ExtArgs>
   tokens?: boolean | Prisma.Organization$tokensArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Organization$auditLogsArgs<ExtArgs>
+  department?: boolean | Prisma.Organization$departmentArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1308,6 +1454,7 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     role: Prisma.$RolePayload<ExtArgs>[]
     tokens: Prisma.$TokenPayload<ExtArgs>[]
     auditLogs: Prisma.$ActivityLogPayload<ExtArgs>[]
+    department: Prisma.$DepartmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1721,6 +1868,7 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   role<T extends Prisma.Organization$roleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$roleArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tokens<T extends Prisma.Organization$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditLogs<T extends Prisma.Organization$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  department<T extends Prisma.Organization$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$departmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2275,6 +2423,30 @@ export type Organization$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.ActivityLogScalarFieldEnum | Prisma.ActivityLogScalarFieldEnum[]
+}
+
+/**
+ * Organization.department
+ */
+export type Organization$departmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Department
+   */
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Department
+   */
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+  orderBy?: Prisma.DepartmentOrderByWithRelationInput | Prisma.DepartmentOrderByWithRelationInput[]
+  cursor?: Prisma.DepartmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DepartmentScalarFieldEnum | Prisma.DepartmentScalarFieldEnum[]
 }
 
 /**

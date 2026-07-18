@@ -10,3 +10,5 @@ export * from "./lib/role.zod.js";
 export * from "./lib/team.zod.js";
 export * from "./lib/token.zod.js";
 export * from "./lib/user.zod.js";
+export * from "./lib/department.zod.js";
+export * from "./lib/email.zod.js";

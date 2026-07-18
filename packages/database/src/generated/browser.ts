@@ -38,6 +38,11 @@ export type Membership = Prisma.MembershipModel
  */
 export type Role = Prisma.RoleModel
 /**
+ * Model Department
+ * 
+ */
+export type Department = Prisma.DepartmentModel
+/**
  * Model Token
  * 
  */

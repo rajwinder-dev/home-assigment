@@ -24,7 +24,6 @@ export const auth = betterAuth({
         to: user.email,
         subject: "Reset your password",
         template: "forgetPassword",
-        isSystemEmail: true,
         data: {
           userName: user.name!,
           resetLink: frontendURL,

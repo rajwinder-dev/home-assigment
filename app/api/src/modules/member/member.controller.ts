@@ -1,17 +1,17 @@
-import { ChangeMemberQueueInput, ChangeMemberRoleInput, memberSchemaResponse } from "@org/zod";
-import z from "zod";
-import { APIFeatures } from "../../core/utils/apiFeatures.js";
-import { catchAsync } from "../../core/utils/catchAsync.js";
-import response from "../../core/utils/response.js";
-import { prisma } from "@org/database";
+import {
+  ChangeMemberRoleInput,
+  memberSchemaResponse,
+} from '@org/zod';
+import z from 'zod';
+import { APIFeatures } from '../../core/utils/apiFeatures.js';
+import { catchAsync } from '../../core/utils/catchAsync.js';
+import response from '../../core/utils/response.js';
+import { prisma } from '@org/database';
 
 export class MemberController {
   static getMembers = catchAsync(async (req, res, _next) => {
-    const queueId = req.query.queueId as string;
-
-    const queuefilter = queueId ? { user: { queueAgents: { some: { queueId } } } } : {};
     const { filterOptions, limit, offset } = new APIFeatures(req.query, {
-      ignore: ["queueId"],
+      ignore: ['queueId'],
     })
       .filter()
       .pagination();
@@ -20,7 +20,6 @@ export class MemberController {
         organizationId: req.organization.id,
         isSystem: false,
         ...filterOptions.where,
-        ...queuefilter,
       },
       select: {
         organizationId: true,
@@ -38,20 +37,6 @@ export class MemberController {
             name: true,
             avatar: true,
             id: true,
-            queueAgents: {
-              where: { organizationId: req.organization.id },
-              select: {
-                ticketCount: true,
-                queueId: true,
-                queue: {
-                  where: { organizationId: req.organization.id },
-                  select: {
-                    id: true,
-                    name: true,
-                  },
-                },
-              },
-            },
           },
         },
       },
@@ -61,8 +46,6 @@ export class MemberController {
 
     const data = membership.map((item) => {
       const user = item.user;
-
-      const totalTickets = user?.queueAgents.reduce((sum, qa) => sum + qa.ticketCount, 0);
 
       return {
         id: item.id,
@@ -74,12 +57,6 @@ export class MemberController {
         roleId: item.role?.id,
         createdAt: item.createdAt,
         organizationId: item.organizationId,
-        totalTickets,
-        queues: user?.queueAgents.map((qa) => ({
-          queueId: qa.queue?.id,
-          name: qa.queue?.name,
-          ticketCount: qa.ticketCount,
-        })),
       };
     });
     const total = await prisma.membership.count({
@@ -104,38 +81,6 @@ export class MemberController {
       },
       data: {
         roleId,
-      },
-    });
-    response(res, data);
-  });
-  static assignQueue = catchAsync(async (req, res, _next) => {
-    const { userId, queueId } = req.params as ChangeMemberQueueInput;
-    const data = await prisma.queueAgent.upsert({
-      where: {
-        queueId_agentId_organizationId: {
-          queueId,
-          agentId: userId,
-          organizationId: req.organization.id,
-        },
-      },
-      update: {},
-      create: {
-        queueId,
-        agentId: userId,
-        organizationId: req.organization.id,
-      },
-    });
-    response(res, data);
-  });
-  static unassignQueue = catchAsync(async (req, res, _next) => {
-    const { userId, queueId } = req.params as ChangeMemberQueueInput;
-    const data = await prisma.queueAgent.delete({
-      where: {
-        queueId_agentId_organizationId: {
-          queueId,
-          agentId: userId,
-          organizationId: req.organization.id,
-        },
       },
     });
     response(res, data);

@@ -39,6 +39,7 @@ model User {
   emailVerified    Boolean        @default(false)
   image            String?
   accounts         Account[]
+  depertment       Department[]
 
   @@index([createdBy])
   @@index([active])
@@ -64,6 +65,7 @@ model Organization {
   role        Role[]
   tokens      Token[]
   auditLogs   ActivityLog[]
+  department  Department[]
 
   @@index([createdBy])
   @@index([active])
@@ -104,6 +106,20 @@ model Role {
 
   @@index([organizationId])
   @@index([active])
+}
+
+model Department {
+  id             String        @id @default(uuid()) @db.Uuid
+  code           String        @unique
+  name           String
+  description    String?
+  active         Boolean       @default(true)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?       @db.Uuid
+  user           User?         @relation(fields: [createdBy], references: [id])
+  createdBy      String?       @db.Uuid
 }
 
 enum TokenType {

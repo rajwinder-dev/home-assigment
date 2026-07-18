@@ -108,6 +108,7 @@ export class OrganizationController {
     });
     await EmailService.queueEmail({
       to: email,
+      organizationId: req.organization.id,
       subject: 'Invite Email to our organizations',
       template: 'invite',
       data: {
@@ -115,7 +116,6 @@ export class OrganizationController {
         organization: req.organization.name,
         inviteLink: url,
       },
-      isSystemEmail: false,
     });
     response(res, { message: 'Invite Sent successfully' });
   });
