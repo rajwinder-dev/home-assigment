@@ -82,7 +82,7 @@ export class authMiddleware {
 
     req.organization = {
       ...req.organization,
-      isOwner: member?.role?.name === 'owner',
+      isOwner: member?.role?.name === 'super_admin',
       id: organizationId,
       name: member.organization?.name as string,
     };

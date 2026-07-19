@@ -23,7 +23,6 @@ export class roleController {
       where: {
         organizationId: req.organization.id,
         active: true,
-        isSystem: false,
       },
       select: {
         id: true,

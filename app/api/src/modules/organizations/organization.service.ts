@@ -27,7 +27,7 @@ export class OrganizationService {
       //  create role for member too
       const role = await tx.role.create({
         data: {
-          name: "owner",
+          name: "super_admin",
           code: readableId("ROL"),
           organizationId: organization.id,
           permissions: permissions,

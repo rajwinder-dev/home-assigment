@@ -21,7 +21,7 @@ const OrganizationList = ({ organizations }: props) => {
             </Avatar>
             <div className="flex-1 space-y-1">
               <h3 className="text-foreground text-xl font-medium">{org.name}</h3>
-              <p className="text-muted-foreground text-sm capitalize">{org.isOwner ? "owner" : "member"}</p>
+              <p className="text-muted-foreground text-sm capitalize">{org.isOwner ? "super_admin" : "member"}</p>
             </div>
           </Card>
         </Link>

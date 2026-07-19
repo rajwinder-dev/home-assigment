@@ -8,7 +8,7 @@ export const permissions = {
     'view_self',
     'edit_self',
   ],
-  depratment: ["create", "edit", "delete", "view"],
+  depratment: ['create', 'edit', 'delete', 'view'],
   activity: ['view'],
 } as const;
 
@@ -20,13 +20,9 @@ export const defaultRoles = [
   {
     name: 'employee',
     description: 'working employee under employee',
-    permissions: { memeber: ['view_self', 'edit_self'] },
+    permissions: { employee: ['view_self', 'edit_self'] },
   },
-  {
-    name: 'admin',
-    description: 'admin with full access',
-    permissions
-  },
+
   {
     name: 'manager',
     description: 'hr manager can manage employees',

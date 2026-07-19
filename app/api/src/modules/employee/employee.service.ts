@@ -7,6 +7,7 @@ export class EmployeeService {
   static async creteEmployee({
     input,
     organizationId,
+    createdBy,
     userRole,
   }: {
     input: CreateEmployeeInput;
@@ -17,6 +18,15 @@ export class EmployeeService {
     const canAssign = await RoleService.canAssignRole(userRole, input.roleId);
     if (!canAssign) throw new appError('You can not assign this role', 403);
 
+    let managerId;
+    if (!input.managerId) {
+      const data = await prisma.membership.findUnique({
+        where: { organizationId_userId: { userId: createdBy, organizationId } },
+      });
+      managerId = data?.id;
+    }else {
+      managerId = input.managerId
+    }
     let employeeId: string;
 
     const existAccount = await prisma.user.findUnique({
@@ -47,7 +57,7 @@ export class EmployeeService {
           userId: employeeId,
           roleId: input.roleId,
           departmentId: input.deptid,
-          managerId: input.managerId,
+          managerId: managerId,
           organizationId,
           salary: input.salary,
           designation: input.designation,

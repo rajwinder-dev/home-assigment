@@ -345,7 +345,7 @@ export function EmployeeTable() {
                             )}
                           </TableCell>
                           <TableCell className="text-right text-sm font-medium">
-                            {employee.salary.toLocaleString()}
+                            {employee.salary?.toLocaleString()}
                           </TableCell>
                           <TableCell className="text-muted-foreground text-xs whitespace-nowrap">
                             {employee.joiningDate
