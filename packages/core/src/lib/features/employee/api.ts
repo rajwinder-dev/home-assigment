@@ -1,7 +1,7 @@
 import type { FilterOptions } from '@org/web-utils';
 
 import { api } from '../../api.js';
-import { CreateEmployeeInput, EmployeeResponseSchema } from '@org/zod';
+import { CreateEmployeeInput, EmployeeResponseSchema, MembershipNode } from '@org/zod';
 
 export const employeeApi = {
   createEmployee: async (input: CreateEmployeeInput) => {
@@ -15,6 +15,12 @@ export const employeeApi = {
     const data = await api.getMany<EmployeeResponseSchema>({
       path: `/employee`,
       filterOptions,
+    });
+    return data;
+  },
+  getemployeeTree: async () => {
+    const data = await api.getMany<MembershipNode>({
+      path: `/employee/tree`,
     });
     return data;
   },
@@ -46,5 +52,4 @@ export const employeeApi = {
     const res = await api.delete({ path: `/employee/${id}` });
     return res;
   },
-
 };

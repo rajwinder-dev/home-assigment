@@ -121,7 +121,8 @@ export class EmployeeController {
       userId: string;
     };
 
-    if(mangerMembershipId === userId) throw new appError('You can not assign yourself as manager', 403);
+    if (mangerMembershipId === userId)
+      throw new appError('You can not assign yourself as manager', 403);
     const data = await prisma.membership.update({
       where: {
         organizationId_userId: { organizationId: req.organization.id, userId },
@@ -143,6 +144,10 @@ export class EmployeeController {
         active: false,
       },
     });
+    response(res, data);
+  });
+  static getorgTree = catchAsync(async (req, res) => {
+    const data = await EmployeeService.getOrgTree(req.organization.id);
     response(res, data);
   });
 }

@@ -11,6 +11,11 @@ employeeRouter.get(
   authMiddleware.verifyPermission('employee', 'view'),
   EmployeeController.getAllEmployees,
 );
+employeeRouter.get(
+  '/tree',
+  authMiddleware.verifyPermission('employee', 'view'),
+  EmployeeController.getorgTree,
+);
 employeeRouter.post(
   '/',
   authMiddleware.verifyPermission('employee', 'create'),

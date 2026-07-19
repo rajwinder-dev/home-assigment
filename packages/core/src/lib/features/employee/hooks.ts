@@ -17,7 +17,15 @@ export const useEmployee = ({ filterOptions, orgId }: props) => {
     queryFn: () => employeeApi.getEmployees(filterOptions!),
     enabled: !!orgId,
   });
-
+  const {
+    data: employeeTree,
+    isLoading: isLoadingEmployeeTree,
+    error: employeeTreeError,
+  } = useQuery({
+    queryKey: ['employee', 'tree', { orgId }],
+    queryFn: () => employeeApi.getemployeeTree(),
+    enabled: !!orgId,
+  });
   const { mutate: updateRoleMutate, isPending: isUpdatingRole } = useMutation({
     mutationFn: ({ roleId, userId }: { roleId: string; userId: string }) =>
       employeeApi.updateRole({ roleId, userId }),
@@ -25,19 +33,27 @@ export const useEmployee = ({ filterOptions, orgId }: props) => {
       queryClient.invalidateQueries({ queryKey: ['employee', { orgId }] });
     },
   });
-  const { mutate: updateMangerMutate, isPending: isUpdatingManager } = useMutation({
-    mutationFn: ({ mangerId, userId }: { mangerId: string; userId: string }) =>
-      employeeApi.updateManager({ mangerId, userId }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['employee', { orgId }] });
+  const { mutate: updateMangerMutate, isPending: isUpdatingManager } =
+    useMutation({
+      mutationFn: ({
+        mangerId,
+        userId,
+      }: {
+        mangerId: string;
+        userId: string;
+      }) => employeeApi.updateManager({ mangerId, userId }),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['employee', { orgId }] });
+      },
+    });
+  const { mutate: deleteEmployee, isPending: isDeletingEmployee } = useMutation(
+    {
+      mutationFn: (userId: string) => employeeApi.deleteEmployee(userId),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['employee', { orgId }] });
+      },
     },
-  });
-  const { mutate: deleteEmployee, isPending: isDeletingEmployee } = useMutation({
-    mutationFn: (userId: string) => employeeApi.deleteEmployee(userId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['employee', { orgId }] });
-    },
-  })
+  );
   const { mutate: createEmployee, isPending: isCreatingEmployee } = useMutation(
     {
       mutationFn: (input: CreateEmployeeInput) =>
@@ -58,6 +74,9 @@ export const useEmployee = ({ filterOptions, orgId }: props) => {
     updateMangerMutate,
     isUpdatingManager,
     deleteEmployee,
-    isDeletingEmployee
+    isDeletingEmployee,
+    employeeTree,
+    isLoadingEmployeeTree,
+    employeeTreeError,
   };
 };

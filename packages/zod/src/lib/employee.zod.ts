@@ -85,3 +85,13 @@ export type CreateEmployeeInput = z.infer<
 export type UpdateEmployeeInput = z.infer<
   typeof updateEmployeeInput.bodySchema
 >;
+
+export type MembershipNode = {
+  id: string;
+  managerId: string | null;
+  designation: string | null;
+  user: { name: string };
+  role: { name: string };
+  department: { name: string } | null;
+  children: MembershipNode[];
+};

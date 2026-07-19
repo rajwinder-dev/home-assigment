@@ -1,4 +1,4 @@
-import { CreateEmployeeInput } from '@org/zod';
+import { CreateEmployeeInput, MembershipNode } from '@org/zod';
 import { auth } from '../../lib/auth.js';
 import { prisma } from '@org/database';
 import { RoleService } from '../role/role.service.js';
@@ -14,15 +14,14 @@ export class EmployeeService {
     createdBy: string;
     userRole?: string;
   }) {
-
-   
     const canAssign = await RoleService.canAssignRole(userRole, input.roleId);
     if (!canAssign) throw new appError('You can not assign this role', 403);
 
     let employeeId: string;
 
     const existAccount = await prisma.user.findUnique({
-      where: { email: input.email }, select: {
+      where: { email: input.email },
+      select: {
         id: true,
       },
     });
@@ -70,4 +69,38 @@ export class EmployeeService {
 
     return data;
   }
+  static getOrgTree = async (organizationId: string) => {
+    const memberships = await prisma.membership.findMany({
+      where: { organizationId },
+      select: {
+        id: true,
+        managerId: true,
+        user: { select: { name: true } },
+        role: { select: { name: true } },
+        department: { select: { name: true } },
+        designation: true,
+      },
+    });
+
+    const byId = new Map<string, MembershipNode>(
+      memberships.map((m) => [m.id, { ...m, children: [] }]),
+    );
+
+    const roots: MembershipNode[] = [];
+
+    for (const m of byId.values()) {
+      if (m.managerId) {
+        const manager = byId.get(m.managerId);
+        if (manager) {
+          manager.children.push(m);
+        } else {
+          roots.push(m); // manager not in this org's dataset — treat as root
+        }
+      } else {
+        roots.push(m);
+      }
+    }
+
+    return roots;
+  };
 }
