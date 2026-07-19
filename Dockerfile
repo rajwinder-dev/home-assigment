@@ -29,7 +29,7 @@ RUN pnpm run build
 
 RUN pnpm deploy --filter=api --prod /prod/api
 RUN pnpm deploy --filter=web --prod /prod/web
-RUN pnpm deploy --filter=email-worker --prod /prod/email-worker
+# RUN pnpm deploy --filter=-worker --prod /prod/-worker
 
 RUN mkdir -p /prod/api/prisma \
   && cp -r packages/database/prisma/* /prod/api/prisma/
@@ -41,12 +41,12 @@ WORKDIR /prod/api
 EXPOSE 3000
 CMD ["pnpm", "start"]
 
-# ---------- EMAIL worker RUNTIME ----------
-FROM base AS email-worker
-COPY --from=build /prod/email-worker /prod/email-worker 
-WORKDIR /prod/email-worker
-CMD ["pnpm", "start"]
-
+# # ----------  worker RUNTIME ----------
+# FROM base AS -worker
+# COPY --from=build /prod/-worker /prod/-worker 
+# WORKDIR /prod/-worker
+# CMD ["pnpm", "start"]
+#
 # ---------- web RUNTIME ----------
 FROM nginx:stable-alpine AS web
 COPY --from=build /usr/src/app/app/web/dist /usr/share/nginx/html
