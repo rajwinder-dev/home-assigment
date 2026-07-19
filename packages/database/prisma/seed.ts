@@ -1,5 +1,4 @@
 import { prisma } from "../src/lib/prismaClient.js";
-import { seedAgents } from "../src/lib/seed/agent.seed.js";
 import { seedMembers } from "../src/lib/seed/membership.seed.js";
 import { seedOrganizations } from "../src/lib/seed/organization.seed.js";
 import { seedUsers } from "../src/lib/seed/users.seed.js";
@@ -16,7 +15,6 @@ export class seedData {
     const users = await seedUsers(seedConfig.usersCount);
     await seedOrganizations(users.splice(0, seedConfig.ownersCount), seedConfig.maxOrg);
     await seedMembers(users.splice(seedConfig.ownersCount + 1, seedConfig.usersCount));
-    await seedAgents();
   }
   static async createOnlyAdmin() {
     console.log("not done");

@@ -18,18 +18,18 @@ export const modules = Object.keys(permissions) as Array<
 
 export const defaultRoles = [
   {
-    name: 'Employee',
+    name: 'employee',
     description: 'working employee under employee',
     permissions: { memeber: ['view_self', 'edit_self'] },
   },
   {
-    name: 'Admin',
+    name: 'admin',
     description: 'admin with full access',
     permissions
   },
   {
-    name: 'Manger',
-    description: 'hr manger can manger employees',
+    name: 'manager',
+    description: 'hr manager can manage employees',
     permissions: { employee: ['create', 'edit', 'view'] },
   },
 ];

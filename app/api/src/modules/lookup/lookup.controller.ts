@@ -2,19 +2,21 @@ import { lookupSchema } from '@org/zod';
 import z from 'zod';
 import { catchAsync } from '../../core/utils/catchAsync.js';
 import response from '../../core/utils/response.js';
-import { getTenantClient } from '@org/database';
+import { getTenantClient, prisma } from '@org/database';
+import { ASSIGNABLE_ROLES } from '@org/constants';
 
 export class LookupController {
   static getRoles = catchAsync(async (req, res, _next) => {
-    const tenantdb = getTenantClient(req.organization.id);
-    const data = await tenantdb.role.findMany({
+    const allowedroles = req.user?.role ? ASSIGNABLE_ROLES[req.user?.role] : [];
+    const data = await prisma.role.findMany({
       select: {
         id: true,
         name: true,
       },
       where: {
+        organizationId: req.organization.id,
         name: {
-          not: 'OWNER',
+          in: allowedroles,
         },
       },
     });
@@ -36,20 +38,27 @@ export class LookupController {
     response(res, output, 200, { schema: z.array(lookupSchema) });
   });
   static getMangers = catchAsync(async (req, res, _next) => {
-    const tenantdb = getTenantClient(req.organization.id);
-    const data = await tenantdb.membership.findMany({
+    const data = await prisma.membership.findMany({
+      where: {
+        organizationId: req.organization.id,
+        role: {
+          name: 'manager',
+        },
+      },
       select: {
         id: true,
         userId: true,
         user: {
           select: {
-
             name: true,
           },
         },
       },
     });
-    const output = data.map((item) => ({ id: item.userId, name: item.user?.name }));
+    const output = data.map((item) => ({
+      id: item.userId,
+      name: item.user?.name,
+    }));
 
     response(res, output, 200, { schema: z.array(lookupSchema) });
   });

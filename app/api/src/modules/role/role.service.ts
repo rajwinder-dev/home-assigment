@@ -1,15 +1,19 @@
-import { CreateRoleInput, UpdateRoleInput } from "@org/zod";
-import { appError } from "../../core/utils/appError.js";
-import { readableId } from "../../core/utils/utils.js";
-import { ActivityService } from "../activity/activity.service.js";
-import { prisma } from "@org/database";
-
+import { CreateRoleInput, UpdateRoleInput } from '@org/zod';
+import { appError } from '../../core/utils/appError.js';
+import { readableId } from '../../core/utils/utils.js';
+import { ActivityService } from '../activity/activity.service.js';
+import { prisma } from '@org/database';
+import { ASSIGNABLE_ROLES } from '@org/constants';
 export class RoleService {
-  static create = async (userId: string, organizationId: string, input: CreateRoleInput) => {
+  static create = async (
+    userId: string,
+    organizationId: string,
+    input: CreateRoleInput,
+  ) => {
     const role = await prisma.role.create({
       data: {
         ...input,
-        code: readableId("ROL"),
+        code: readableId('ROL'),
         organizationId,
         createdBy: userId,
       },
@@ -17,11 +21,11 @@ export class RoleService {
     await ActivityService.lagActivity({
       organizationId,
       actorId: userId,
-      actorType: "USER",
-      message: "role is created ",
-      event: "role.create",
+      actorType: 'USER',
+      message: 'role is created ',
+      event: 'role.create',
       entityId: role.id,
-      entityType: "ROLE",
+      entityType: 'ROLE',
     });
     return role;
   };
@@ -36,7 +40,9 @@ export class RoleService {
     userId: string;
     organizationId: string;
   }) => {
-    const existingRole = await prisma.role.findUnique({ where: { id: roleId } });
+    const existingRole = await prisma.role.findUnique({
+      where: { id: roleId },
+    });
     const updatedRole = await prisma.role.update({
       data: input,
       where: {
@@ -48,13 +54,13 @@ export class RoleService {
     await ActivityService.lagActivity({
       organizationId,
       actorId: userId,
-      actorType: "USER",
-      message: "role is updated ",
-      event: "role.update",
+      actorType: 'USER',
+      message: 'role is updated ',
+      event: 'role.update',
       entityId: roleId,
       oldData: existingRole,
       newData: updatedRole,
-      entityType: "ROLE",
+      entityType: 'ROLE',
     });
     return updatedRole;
   };
@@ -70,21 +76,26 @@ export class RoleService {
     const existingRole = await prisma.role.findUnique({
       where: {
         id: roleId,
-        isSystem: false
+        isSystem: false,
       },
       select: {
         active: true,
       },
     });
-    if (!existingRole) throw new appError("Role not found ", 404, "NOT_FOUND");
-    if (!existingRole.active) throw new appError("Role Already deleted", 409, "CONFLICT_ERROR");
+    if (!existingRole) throw new appError('Role not found ', 404, 'NOT_FOUND');
+    if (!existingRole.active)
+      throw new appError('Role Already deleted', 409, 'CONFLICT_ERROR');
     const userCount = await prisma.user.count({
       where: {
         id: roleId,
       },
     });
     if (userCount > 0)
-      throw new appError("users are already assigned to this role", 409, "CONFLICT_ERROR");
+      throw new appError(
+        'users are already assigned to this role',
+        409,
+        'CONFLICT_ERROR',
+      );
     const updatedRole = prisma.role.update({
       data: {
         active: false,
@@ -92,20 +103,28 @@ export class RoleService {
       where: {
         id: roleId,
         organizationId,
-        isSystem: false
+        isSystem: false,
       },
     });
     await ActivityService.lagActivity({
       organizationId,
       actorId: userId,
-      actorType: "USER",
-      message: "role is updated ",
-      event: "role.update",
+      actorType: 'USER',
+      message: 'role is updated ',
+      event: 'role.update',
       entityId: roleId,
       oldData: existingRole,
       newData: updatedRole,
-      entityType: "ROLE",
+      entityType: 'ROLE',
     });
     return updatedRole;
+  };
+  static canAssignRole = async (assignerRole?: string, roleId?: string) => {
+    if(!assignerRole) throw new appError("Assigner role is required", 400);
+    const role = await prisma.role.findUnique({ where: { id: roleId } });
+    console.log(assignerRole, role)
+    if (!role) throw new appError('Role not found', 404);
+    const allowed = ASSIGNABLE_ROLES[assignerRole.toLowerCase()] || [];
+    return allowed.includes(role.name.toLowerCase());
   };
 }

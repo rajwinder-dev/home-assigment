@@ -1,7 +1,7 @@
 import type { FilterOptions } from '@org/web-utils';
 
 import { api } from '../../api.js';
-import { CreateEmployeeInput } from '@org/zod';
+import { CreateEmployeeInput, EmployeeResponseSchema } from '@org/zod';
 
 export const employeeApi = {
   createEmployee: async (input: CreateEmployeeInput) => {
@@ -12,7 +12,7 @@ export const employeeApi = {
     return data;
   },
   getEmployees: async (filterOptions: FilterOptions) => {
-    const data = await api.getMany({
+    const data = await api.getMany<EmployeeResponseSchema>({
       path: `/employee`,
       filterOptions,
     });
@@ -25,9 +25,26 @@ export const employeeApi = {
     roleId: string;
     userId: string;
   }) => {
-    const data = await api.post({
-      path: `/employee/${roleId}/roles/${userId}`,
+    const data = await api.patch({
+      path: `/employee/${roleId}/role/${userId}`,
     });
     return data;
   },
+  updateManager: async ({
+    mangerId,
+    userId,
+  }: {
+    mangerId: string;
+    userId: string;
+  }) => {
+    const data = await api.patch({
+      path: `/employee/${mangerId}/manager/${userId}`,
+    });
+    return data;
+  },
+  deleteEmployee: async (id: string) => {
+    const res = await api.delete({ path: `/employee/${id}` });
+    return res;
+  },
+
 };

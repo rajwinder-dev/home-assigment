@@ -44,6 +44,39 @@ export const updateEmployeeInput = {
     .strict(),
 };
 
+const departmentSchema = z.object({
+  id: z.uuid(),
+  name: z.string(),
+});
+
+const roleSchema = z.object({
+  id: z.uuid(),
+  name: z.string(),
+});
+
+const userSchema = z.object({
+  email: z.email(),
+  name: z.string(),
+  avatar: z.string().nullable(),
+  id: z.string().uuid(),
+});
+
+const employeeResponseSchema = z.object({
+  id: z.uuid(),
+  createdAt: z.date(),
+  salary: z.number(),
+  designation: z.string(),
+  joiningDate: z.date(),
+  department: departmentSchema,
+  repotingManger: z.object({
+    name: z.string(),
+    id: z.string(),
+  }),
+  active: z.boolean(),
+  role: roleSchema,
+  user: userSchema,
+});
+export type EmployeeResponseSchema = z.infer<typeof employeeResponseSchema>;
 export type CreateEmployeeInput = z.infer<
   typeof createEmployeeInput.bodySchema
 >;

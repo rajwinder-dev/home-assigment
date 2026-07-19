@@ -45,6 +45,7 @@ export type MembershipMinAggregateOutputType = {
   designation: string | null
   salary: number | null
   joiningDate: Date | null
+  active: boolean | null
   isSystem: boolean | null
 }
 
@@ -59,6 +60,7 @@ export type MembershipMaxAggregateOutputType = {
   designation: string | null
   salary: number | null
   joiningDate: Date | null
+  active: boolean | null
   isSystem: boolean | null
 }
 
@@ -73,6 +75,7 @@ export type MembershipCountAggregateOutputType = {
   designation: number
   salary: number
   joiningDate: number
+  active: number
   isSystem: number
   _all: number
 }
@@ -97,6 +100,7 @@ export type MembershipMinAggregateInputType = {
   designation?: true
   salary?: true
   joiningDate?: true
+  active?: true
   isSystem?: true
 }
 
@@ -111,6 +115,7 @@ export type MembershipMaxAggregateInputType = {
   designation?: true
   salary?: true
   joiningDate?: true
+  active?: true
   isSystem?: true
 }
 
@@ -125,6 +130,7 @@ export type MembershipCountAggregateInputType = {
   designation?: true
   salary?: true
   joiningDate?: true
+  active?: true
   isSystem?: true
   _all?: true
 }
@@ -226,6 +232,7 @@ export type MembershipGroupByOutputType = {
   designation: string | null
   salary: number | null
   joiningDate: Date | null
+  active: boolean
   isSystem: boolean
   _count: MembershipCountAggregateOutputType | null
   _avg: MembershipAvgAggregateOutputType | null
@@ -263,6 +270,7 @@ export type MembershipWhereInput = {
   designation?: Prisma.StringNullableFilter<"Membership"> | string | null
   salary?: Prisma.FloatNullableFilter<"Membership"> | number | null
   joiningDate?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
+  active?: Prisma.BoolFilter<"Membership"> | boolean
   isSystem?: Prisma.BoolFilter<"Membership"> | boolean
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -282,6 +290,7 @@ export type MembershipOrderByWithRelationInput = {
   designation?: Prisma.SortOrderInput | Prisma.SortOrder
   salary?: Prisma.SortOrderInput | Prisma.SortOrder
   joiningDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  active?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
@@ -305,6 +314,7 @@ export type MembershipWhereUniqueInput = Prisma.AtLeast<{
   designation?: Prisma.StringNullableFilter<"Membership"> | string | null
   salary?: Prisma.FloatNullableFilter<"Membership"> | number | null
   joiningDate?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
+  active?: Prisma.BoolFilter<"Membership"> | boolean
   isSystem?: Prisma.BoolFilter<"Membership"> | boolean
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -324,6 +334,7 @@ export type MembershipOrderByWithAggregationInput = {
   designation?: Prisma.SortOrderInput | Prisma.SortOrder
   salary?: Prisma.SortOrderInput | Prisma.SortOrder
   joiningDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  active?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
   _count?: Prisma.MembershipCountOrderByAggregateInput
   _avg?: Prisma.MembershipAvgOrderByAggregateInput
@@ -346,6 +357,7 @@ export type MembershipScalarWhereWithAggregatesInput = {
   designation?: Prisma.StringNullableWithAggregatesFilter<"Membership"> | string | null
   salary?: Prisma.FloatNullableWithAggregatesFilter<"Membership"> | number | null
   joiningDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Membership"> | Date | string | null
+  active?: Prisma.BoolWithAggregatesFilter<"Membership"> | boolean
   isSystem?: Prisma.BoolWithAggregatesFilter<"Membership"> | boolean
 }
 
@@ -355,6 +367,7 @@ export type MembershipCreateInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   organization?: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   user?: Prisma.UserCreateNestedOneWithoutMembershipInput
@@ -374,6 +387,7 @@ export type MembershipUncheckedCreateInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -383,6 +397,7 @@ export type MembershipUpdateInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   organization?: Prisma.OrganizationUpdateOneWithoutMembershipNestedInput
   user?: Prisma.UserUpdateOneWithoutMembershipNestedInput
@@ -402,6 +417,7 @@ export type MembershipUncheckedUpdateInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -416,6 +432,7 @@ export type MembershipCreateManyInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -425,6 +442,7 @@ export type MembershipUpdateManyMutationInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -439,6 +457,7 @@ export type MembershipUncheckedUpdateManyInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -468,6 +487,7 @@ export type MembershipCountOrderByAggregateInput = {
   designation?: Prisma.SortOrder
   salary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
 }
 
@@ -486,6 +506,7 @@ export type MembershipMaxOrderByAggregateInput = {
   designation?: Prisma.SortOrder
   salary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
 }
 
@@ -500,6 +521,7 @@ export type MembershipMinOrderByAggregateInput = {
   designation?: Prisma.SortOrder
   salary?: Prisma.SortOrder
   joiningDate?: Prisma.SortOrder
+  active?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
 }
 
@@ -735,6 +757,7 @@ export type MembershipCreateWithoutUserInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   organization?: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   repotingManger?: Prisma.UserCreateNestedOneWithoutReportingMangerInput
@@ -752,6 +775,7 @@ export type MembershipUncheckedCreateWithoutUserInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -771,6 +795,7 @@ export type MembershipCreateWithoutRepotingMangerInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   organization?: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   user?: Prisma.UserCreateNestedOneWithoutMembershipInput
@@ -788,6 +813,7 @@ export type MembershipUncheckedCreateWithoutRepotingMangerInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -831,6 +857,7 @@ export type MembershipScalarWhereInput = {
   designation?: Prisma.StringNullableFilter<"Membership"> | string | null
   salary?: Prisma.FloatNullableFilter<"Membership"> | number | null
   joiningDate?: Prisma.DateTimeNullableFilter<"Membership"> | Date | string | null
+  active?: Prisma.BoolFilter<"Membership"> | boolean
   isSystem?: Prisma.BoolFilter<"Membership"> | boolean
 }
 
@@ -856,6 +883,7 @@ export type MembershipCreateWithoutOrganizationInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   user?: Prisma.UserCreateNestedOneWithoutMembershipInput
   repotingManger?: Prisma.UserCreateNestedOneWithoutReportingMangerInput
@@ -873,6 +901,7 @@ export type MembershipUncheckedCreateWithoutOrganizationInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -908,6 +937,7 @@ export type MembershipCreateWithoutRoleInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   organization?: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   user?: Prisma.UserCreateNestedOneWithoutMembershipInput
@@ -925,6 +955,7 @@ export type MembershipUncheckedCreateWithoutRoleInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -960,6 +991,7 @@ export type MembershipCreateWithoutDepartmentInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
   organization?: Prisma.OrganizationCreateNestedOneWithoutMembershipInput
   user?: Prisma.UserCreateNestedOneWithoutMembershipInput
@@ -977,6 +1009,7 @@ export type MembershipUncheckedCreateWithoutDepartmentInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1016,6 +1049,7 @@ export type MembershipCreateManyUserInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1029,6 +1063,7 @@ export type MembershipCreateManyRepotingMangerInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1038,6 +1073,7 @@ export type MembershipUpdateWithoutUserInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   organization?: Prisma.OrganizationUpdateOneWithoutMembershipNestedInput
   repotingManger?: Prisma.UserUpdateOneWithoutReportingMangerNestedInput
@@ -1055,6 +1091,7 @@ export type MembershipUncheckedUpdateWithoutUserInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1068,6 +1105,7 @@ export type MembershipUncheckedUpdateManyWithoutUserInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1077,6 +1115,7 @@ export type MembershipUpdateWithoutRepotingMangerInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   organization?: Prisma.OrganizationUpdateOneWithoutMembershipNestedInput
   user?: Prisma.UserUpdateOneWithoutMembershipNestedInput
@@ -1094,6 +1133,7 @@ export type MembershipUncheckedUpdateWithoutRepotingMangerInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1107,6 +1147,7 @@ export type MembershipUncheckedUpdateManyWithoutRepotingMangerInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1120,6 +1161,7 @@ export type MembershipCreateManyOrganizationInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1129,6 +1171,7 @@ export type MembershipUpdateWithoutOrganizationInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneWithoutMembershipNestedInput
   repotingManger?: Prisma.UserUpdateOneWithoutReportingMangerNestedInput
@@ -1146,6 +1189,7 @@ export type MembershipUncheckedUpdateWithoutOrganizationInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1159,6 +1203,7 @@ export type MembershipUncheckedUpdateManyWithoutOrganizationInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1172,6 +1217,7 @@ export type MembershipCreateManyRoleInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1181,6 +1227,7 @@ export type MembershipUpdateWithoutRoleInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   organization?: Prisma.OrganizationUpdateOneWithoutMembershipNestedInput
   user?: Prisma.UserUpdateOneWithoutMembershipNestedInput
@@ -1198,6 +1245,7 @@ export type MembershipUncheckedUpdateWithoutRoleInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1211,6 +1259,7 @@ export type MembershipUncheckedUpdateManyWithoutRoleInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1224,6 +1273,7 @@ export type MembershipCreateManyDepartmentInput = {
   designation?: string | null
   salary?: number | null
   joiningDate?: Date | string | null
+  active?: boolean
   isSystem?: boolean
 }
 
@@ -1233,6 +1283,7 @@ export type MembershipUpdateWithoutDepartmentInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
   organization?: Prisma.OrganizationUpdateOneWithoutMembershipNestedInput
   user?: Prisma.UserUpdateOneWithoutMembershipNestedInput
@@ -1250,6 +1301,7 @@ export type MembershipUncheckedUpdateWithoutDepartmentInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1263,6 +1315,7 @@ export type MembershipUncheckedUpdateManyWithoutDepartmentInput = {
   designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   salary?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   joiningDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isSystem?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -1279,6 +1332,7 @@ export type MembershipSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   designation?: boolean
   salary?: boolean
   joiningDate?: boolean
+  active?: boolean
   isSystem?: boolean
   organization?: boolean | Prisma.Membership$organizationArgs<ExtArgs>
   user?: boolean | Prisma.Membership$userArgs<ExtArgs>
@@ -1298,6 +1352,7 @@ export type MembershipSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   designation?: boolean
   salary?: boolean
   joiningDate?: boolean
+  active?: boolean
   isSystem?: boolean
   organization?: boolean | Prisma.Membership$organizationArgs<ExtArgs>
   user?: boolean | Prisma.Membership$userArgs<ExtArgs>
@@ -1317,6 +1372,7 @@ export type MembershipSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   designation?: boolean
   salary?: boolean
   joiningDate?: boolean
+  active?: boolean
   isSystem?: boolean
   organization?: boolean | Prisma.Membership$organizationArgs<ExtArgs>
   user?: boolean | Prisma.Membership$userArgs<ExtArgs>
@@ -1336,10 +1392,11 @@ export type MembershipSelectScalar = {
   designation?: boolean
   salary?: boolean
   joiningDate?: boolean
+  active?: boolean
   isSystem?: boolean
 }
 
-export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "userId" | "managerId" | "roleId" | "departmentId" | "createdAt" | "designation" | "salary" | "joiningDate" | "isSystem", ExtArgs["result"]["membership"]>
+export type MembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "userId" | "managerId" | "roleId" | "departmentId" | "createdAt" | "designation" | "salary" | "joiningDate" | "active" | "isSystem", ExtArgs["result"]["membership"]>
 export type MembershipInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.Membership$organizationArgs<ExtArgs>
   user?: boolean | Prisma.Membership$userArgs<ExtArgs>
@@ -1382,6 +1439,7 @@ export type $MembershipPayload<ExtArgs extends runtime.Types.Extensions.Internal
     designation: string | null
     salary: number | null
     joiningDate: Date | null
+    active: boolean
     isSystem: boolean
   }, ExtArgs["result"]["membership"]>
   composites: {}
@@ -1821,6 +1879,7 @@ export interface MembershipFieldRefs {
   readonly designation: Prisma.FieldRef<"Membership", 'String'>
   readonly salary: Prisma.FieldRef<"Membership", 'Float'>
   readonly joiningDate: Prisma.FieldRef<"Membership", 'DateTime'>
+  readonly active: Prisma.FieldRef<"Membership", 'Boolean'>
   readonly isSystem: Prisma.FieldRef<"Membership", 'Boolean'>
 }
     

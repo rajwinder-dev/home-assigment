@@ -95,7 +95,7 @@ export function DepartmentsTable() {
                       )}
                     >
                       <TableCell>
-                        <p className="text-sm leading-tight font-medium">
+                        <p className="text-sm leading-tight font-medium capitalize">
                           {department.name}
                         </p>
                       </TableCell>

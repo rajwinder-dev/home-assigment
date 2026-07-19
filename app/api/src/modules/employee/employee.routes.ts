@@ -16,10 +16,21 @@ employeeRouter.post(
   authMiddleware.verifyPermission('employee', 'create'),
   EmployeeController.createEmployee,
 );
+employeeRouter.delete(
+  '/:id',
+  authMiddleware.verifyPermission('employee', 'delete'),
+  EmployeeController.deleteEmployee,
+);
+
 employeeRouter.patch(
-  '/:roleId/roles/:userId',
+  '/:roleId/role/:userId',
   authMiddleware.restrictToOwner,
   EmployeeController.updateRole,
+);
+employeeRouter.patch(
+  '/:managerId/manager/:userId',
+  authMiddleware.restrictToOwner,
+  EmployeeController.updateManager,
 );
 
 export default employeeRouter;

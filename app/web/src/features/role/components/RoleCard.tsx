@@ -56,65 +56,65 @@ export function RoleCard({ role }: RoleCardProps) {
                 isSelected ? 'text-primary' : 'text-muted-foreground'
               }`}
             />
-            <CardTitle className="truncate text-base">{role.name}</CardTitle>
+            <CardTitle className="truncate text-base capitalize">{role.name}</CardTitle>
           </div>
 
-          <div className="flex shrink-0 gap-1">
-            <RoleFormDialog
-              mode="edit"
-              initialRole={role}
-              trigger={
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-7 w-7"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Pencil className="h-3.5 w-3.5" />
-                </Button>
-              }
-            />
-
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="text-destructive hover:text-destructive h-7 w-7"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Delete "{role.name}"?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. All users assigned this role
-                    will lose its permissions.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                    onClick={() =>
-                      deleteRole(role.id, {
-                        onSuccess: () => {
-                          toast.success('role deleted successfully');
-                        },
-                        onError: (error) => {
-                          toast.error(error.message);
-                        },
-                      })
-                    }
-                  >
-                    Delete
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
+          {/* <div className="flex shrink-0 gap-1"> */}
+          {/*   <RoleFormDialog */}
+          {/*     mode="edit" */}
+          {/*     initialRole={role} */}
+          {/*     trigger={ */}
+          {/*       <Button */}
+          {/*         size="icon" */}
+          {/*         variant="ghost" */}
+          {/*         className="h-7 w-7" */}
+          {/*         onClick={(e) => e.stopPropagation()} */}
+          {/*       > */}
+          {/*         <Pencil className="h-3.5 w-3.5" /> */}
+          {/*       </Button> */}
+          {/*     } */}
+          {/*   /> */}
+          {/**/}
+          {/*   <AlertDialog> */}
+          {/*     <AlertDialogTrigger asChild> */}
+          {/*       <Button */}
+          {/*         size="icon" */}
+          {/*         variant="ghost" */}
+          {/*         className="text-destructive hover:text-destructive h-7 w-7" */}
+          {/*         onClick={(e) => e.stopPropagation()} */}
+          {/*       > */}
+          {/*         <Trash2 className="h-3.5 w-3.5" /> */}
+          {/*       </Button> */}
+          {/*     </AlertDialogTrigger> */}
+          {/*     <AlertDialogContent> */}
+          {/*       <AlertDialogHeader> */}
+          {/*         <AlertDialogTitle>Delete "{role.name}"?</AlertDialogTitle> */}
+          {/*         <AlertDialogDescription> */}
+          {/*           This action cannot be undone. All users assigned this role */}
+          {/*           will lose its permissions. */}
+          {/*         </AlertDialogDescription> */}
+          {/*       </AlertDialogHeader> */}
+          {/*       <AlertDialogFooter> */}
+          {/*         <AlertDialogCancel>Cancel</AlertDialogCancel> */}
+          {/*         <AlertDialogAction */}
+          {/*           className="bg-destructive text-destructive-foreground hover:bg-destructive/90" */}
+          {/*           onClick={() => */}
+          {/*             deleteRole(role.id, { */}
+          {/*               onSuccess: () => { */}
+          {/*                 toast.success('role deleted successfully'); */}
+          {/*               }, */}
+          {/*               onError: (error) => { */}
+          {/*                 toast.error(error.message); */}
+          {/*               }, */}
+          {/*             }) */}
+          {/*           } */}
+          {/*         > */}
+          {/*           Delete */}
+          {/*         </AlertDialogAction> */}
+          {/*       </AlertDialogFooter> */}
+          {/*     </AlertDialogContent> */}
+          {/*   </AlertDialog> */}
+          {/* </div> */}
         </div>
 
         {role.description && (

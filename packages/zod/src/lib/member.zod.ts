@@ -16,3 +16,4 @@ export const changeMemberQueueInput= {
 
 export type ChangeMemberRoleInput = z.infer<typeof changeMemberRoleInput.paramsSchema>;
 export type ChangeMemberQueueInput = z.infer<typeof changeMemberQueueInput.paramsSchema>;
+

@@ -1200,7 +1200,7 @@ export const UserScalarFieldEnum = {
   avatar: 'avatar',
   location: 'location',
   active: 'active',
-  gander: 'gander',
+  gender: 'gender',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
@@ -1241,6 +1241,7 @@ export const MembershipScalarFieldEnum = {
   designation: 'designation',
   salary: 'salary',
   joiningDate: 'joiningDate',
+  active: 'active',
   isSystem: 'isSystem'
 } as const
 

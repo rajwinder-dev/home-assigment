@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Membership" ADD COLUMN     "active" BOOLEAN NOT NULL DEFAULT true;

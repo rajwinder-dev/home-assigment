@@ -1,5 +1,5 @@
+import { prisma } from '@org/database';
 import {
-  ChangeMemberRoleInput,
   CreateEmployeeInput,
   memberSchemaResponse,
 } from '@org/zod';
@@ -7,20 +7,22 @@ import z from 'zod';
 import { APIFeatures } from '../../core/utils/apiFeatures.js';
 import { catchAsync } from '../../core/utils/catchAsync.js';
 import response from '../../core/utils/response.js';
-import { prisma } from '@org/database';
 import { EmployeeService } from './employee.service.js';
+import { RoleService } from '../role/role.service.js';
+import { appError } from '../../core/utils/appError.js';
 
 export class EmployeeController {
-  static createEmployee = catchAsync(async (req, res, _next) => {
+  static createEmployee = catchAsync(async (req, res) => {
     const input = req.body as CreateEmployeeInput;
     const data = await EmployeeService.creteEmployee({
       input,
       organizationId: req.organization.id,
       createdBy: req.user.id,
+      userRole: req.user.role,
     });
     response(res, data, 201);
   });
-  static getAllEmployees = catchAsync(async (req, res, _next) => {
+  static getAllEmployees = catchAsync(async (req, res) => {
     const { filterOptions, limit, offset } = new APIFeatures(req.query)
       .filter()
       .pagination()
@@ -32,12 +34,24 @@ export class EmployeeController {
         ...filterOptions.where,
       },
       select: {
-        organizationId: true,
         id: true,
         createdAt: true,
         salary: true,
         designation: true,
-        joinginingDate: true,
+        joiningDate: true,
+        repotingManger: {
+          select: {
+            name: true,
+            id: true,
+          },
+        },
+        active: true,
+        department: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
         role: {
           select: {
             id: true,
@@ -57,35 +71,21 @@ export class EmployeeController {
       take: limit,
     });
 
-    const data = membership.map((item) => {
-      const user = item.user;
-
-      return {
-        id: item.id,
-        userId: item.user?.id,
-        email: user?.email,
-        name: user?.name,
-        avatar: user?.avatar,
-        role: item.role?.name,
-        roleId: item.role?.id,
-        createdAt: item.createdAt,
-        organizationId: item.organizationId,
-      };
-    });
-
     const total = await prisma.membership.count({
       where: {
         organizationId: req.organization.id,
         ...filterOptions.where,
       },
     });
-    response(res, data, 200, {
+    response(res, membership, 200, {
       otherFields: { limit, offset, total },
       schema: z.array(memberSchemaResponse),
     });
   });
-  static updateRole = catchAsync(async (req, res, _next) => {
-    const { userId, roleId } = req.params as ChangeMemberRoleInput;
+  static updateRole = catchAsync(async (req, res) => {
+    const { userId, roleId } = req.params as { userId: string; roleId: string };
+    const canAssign = await RoleService.canAssignRole(req.user.role, roleId);
+    if (!canAssign) throw new appError('You can not assign this role', 403);
     const data = await prisma.membership.update({
       where: {
         organizationId_userId: {
@@ -95,6 +95,40 @@ export class EmployeeController {
       },
       data: {
         roleId,
+      },
+    });
+    response(res, data);
+  });
+  static updateManager = catchAsync(async (req, res) => {
+    const { userId, managerId } = req.params as {
+      userId: string;
+      managerId: string;
+    };
+    console.log(userId, managerId)
+    const data = await prisma.membership.update({
+      where: {
+        organizationId_userId: {
+          organizationId: req.organization.id,
+          userId,
+        },
+      },
+      data: {
+        managerId,
+      },
+    });
+    response(res, data);
+  });
+  static deleteEmployee = catchAsync(async (req, res) => {
+    const id = req.params.id as string;
+    const data = await prisma.membership.update({
+      where: {
+        organizationId_userId: {
+          organizationId: req.organization.id,
+          userId: id,
+        },
+      },
+      data: {
+        active: false,
       },
     });
     response(res, data);

@@ -12,15 +12,15 @@ export default function RolesPage() {
         title="Roles & Permissions"
         description="Manage roles and define what each one can d"
       >
-        <RoleFormDialog
-          mode="create"
-          trigger={
-            <Button size="sm" className="gap-1.5">
-              <Plus className="h-4 w-4" />
-              New Role
-            </Button>
-          }
-        />
+      {/*   <RoleFormDialog */}
+      {/*     mode="create" */}
+      {/*     trigger={ */}
+      {/*       <Button size="sm" className="gap-1.5"> */}
+      {/*         <Plus className="h-4 w-4" /> */}
+      {/*         New Role */}
+      {/*       </Button> */}
+      {/*     } */}
+      {/*   /> */}
       </PageHeader>
       <div className="flex h-[calc(100vh-145px)]">
         <RoleList />

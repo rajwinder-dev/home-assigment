@@ -1,17 +1,8 @@
-import { useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { UserPlus } from 'lucide-react';
-import { CreateEmployeeForm } from './CreateEmployeeForm';
 import { useNavigate } from 'react-router';
+import { EmployeeTable } from './EmployeeTable';
 
 export default function EmployeePage() {
   const navigate = useNavigate();
@@ -31,6 +22,7 @@ export default function EmployeePage() {
           Create Employee
         </Button>
       </PageHeader>
+      <EmployeeTable />
       {/* Analytics strip */}
       {/* Table card */}
       {/* {selected.size > 0 && <BulkActionsBar />} */}

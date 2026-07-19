@@ -18,7 +18,7 @@ model User {
   avatar          String?
   location        String?
   active          Boolean        @default(true)
-  gander          String?
+  gender          String?
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
   creator         User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
@@ -83,7 +83,7 @@ model Membership {
   designation    String?
   salary         Float?      
   joiningDate    DateTime?
-
+  active         Boolean       @default(true)
   isSystem Boolean @default(false)
 
   @@unique([organizationId, userId])

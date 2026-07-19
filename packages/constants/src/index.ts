@@ -1,1 +1,2 @@
 export * from './lib/auth.constants.js';
+export * from './lib/role.constants.js';

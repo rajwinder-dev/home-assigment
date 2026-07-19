@@ -32,7 +32,7 @@ export type UserMinAggregateOutputType = {
   avatar: string | null
   location: string | null
   active: boolean | null
-  gander: string | null
+  gender: string | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
@@ -49,7 +49,7 @@ export type UserMaxAggregateOutputType = {
   avatar: string | null
   location: string | null
   active: boolean | null
-  gander: string | null
+  gender: string | null
   createdAt: Date | null
   updatedAt: Date | null
   createdBy: string | null
@@ -66,7 +66,7 @@ export type UserCountAggregateOutputType = {
   avatar: number
   location: number
   active: number
-  gander: number
+  gender: number
   createdAt: number
   updatedAt: number
   createdBy: number
@@ -85,7 +85,7 @@ export type UserMinAggregateInputType = {
   avatar?: true
   location?: true
   active?: true
-  gander?: true
+  gender?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -102,7 +102,7 @@ export type UserMaxAggregateInputType = {
   avatar?: true
   location?: true
   active?: true
-  gander?: true
+  gender?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -119,7 +119,7 @@ export type UserCountAggregateInputType = {
   avatar?: true
   location?: true
   active?: true
-  gander?: true
+  gender?: true
   createdAt?: true
   updatedAt?: true
   createdBy?: true
@@ -209,7 +209,7 @@ export type UserGroupByOutputType = {
   avatar: string | null
   location: string | null
   active: boolean
-  gander: string | null
+  gender: string | null
   createdAt: Date
   updatedAt: Date
   createdBy: string | null
@@ -247,7 +247,7 @@ export type UserWhereInput = {
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  gander?: Prisma.StringNullableFilter<"User"> | string | null
+  gender?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -276,7 +276,7 @@ export type UserOrderByWithRelationInput = {
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
-  gander?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -308,7 +308,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  gander?: Prisma.StringNullableFilter<"User"> | string | null
+  gender?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -337,7 +337,7 @@ export type UserOrderByWithAggregationInput = {
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
-  gander?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -360,7 +360,7 @@ export type UserScalarWhereWithAggregatesInput = {
   avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  gander?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  gender?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableWithAggregatesFilter<"User"> | string | null
@@ -377,7 +377,7 @@ export type UserCreateInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -405,7 +405,7 @@ export type UserUncheckedCreateInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -433,7 +433,7 @@ export type UserUpdateInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -461,7 +461,7 @@ export type UserUncheckedUpdateInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -489,7 +489,7 @@ export type UserCreateManyInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -506,7 +506,7 @@ export type UserUpdateManyMutationInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -522,7 +522,7 @@ export type UserUncheckedUpdateManyInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -554,7 +554,7 @@ export type UserCountOrderByAggregateInput = {
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  gander?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -571,7 +571,7 @@ export type UserMaxOrderByAggregateInput = {
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  gander?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -588,7 +588,7 @@ export type UserMinOrderByAggregateInput = {
   avatar?: Prisma.SortOrder
   location?: Prisma.SortOrder
   active?: Prisma.SortOrder
-  gander?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -840,7 +840,7 @@ export type UserCreateWithoutCreatedUsersInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -867,7 +867,7 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -899,7 +899,7 @@ export type UserCreateWithoutCreatorInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -926,7 +926,7 @@ export type UserUncheckedCreateWithoutCreatorInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -974,7 +974,7 @@ export type UserUpdateWithoutCreatedUsersInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1001,7 +1001,7 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1047,7 +1047,7 @@ export type UserScalarWhereInput = {
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   active?: Prisma.BoolFilter<"User"> | boolean
-  gander?: Prisma.StringNullableFilter<"User"> | string | null
+  gender?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   createdBy?: Prisma.UuidNullableFilter<"User"> | string | null
@@ -1064,7 +1064,7 @@ export type UserCreateWithoutOrganizationInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1091,7 +1091,7 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1134,7 +1134,7 @@ export type UserUpdateWithoutOrganizationInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1161,7 +1161,7 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1188,7 +1188,7 @@ export type UserCreateWithoutMembershipInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1215,7 +1215,7 @@ export type UserUncheckedCreateWithoutMembershipInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1247,7 +1247,7 @@ export type UserCreateWithoutReportingMangerInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1274,7 +1274,7 @@ export type UserUncheckedCreateWithoutReportingMangerInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1317,7 +1317,7 @@ export type UserUpdateWithoutMembershipInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1344,7 +1344,7 @@ export type UserUncheckedUpdateWithoutMembershipInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1382,7 +1382,7 @@ export type UserUpdateWithoutReportingMangerInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1409,7 +1409,7 @@ export type UserUncheckedUpdateWithoutReportingMangerInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1436,7 +1436,7 @@ export type UserCreateWithoutCreatedRolesInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1463,7 +1463,7 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1506,7 +1506,7 @@ export type UserUpdateWithoutCreatedRolesInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1533,7 +1533,7 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1560,7 +1560,7 @@ export type UserCreateWithoutDepartmentsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1587,7 +1587,7 @@ export type UserUncheckedCreateWithoutDepartmentsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1630,7 +1630,7 @@ export type UserUpdateWithoutDepartmentsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1657,7 +1657,7 @@ export type UserUncheckedUpdateWithoutDepartmentsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1684,7 +1684,7 @@ export type UserCreateWithoutTokenInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1711,7 +1711,7 @@ export type UserUncheckedCreateWithoutTokenInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1743,7 +1743,7 @@ export type UserCreateWithoutTokenCreatedByInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1770,7 +1770,7 @@ export type UserUncheckedCreateWithoutTokenCreatedByInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -1813,7 +1813,7 @@ export type UserUpdateWithoutTokenInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1840,7 +1840,7 @@ export type UserUncheckedUpdateWithoutTokenInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1878,7 +1878,7 @@ export type UserUpdateWithoutTokenCreatedByInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1905,7 +1905,7 @@ export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1932,7 +1932,7 @@ export type UserCreateWithoutActivityLogsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -1959,7 +1959,7 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -2002,7 +2002,7 @@ export type UserUpdateWithoutActivityLogsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2029,7 +2029,7 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2056,7 +2056,7 @@ export type UserCreateWithoutSessionsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2083,7 +2083,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -2126,7 +2126,7 @@ export type UserUpdateWithoutSessionsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2153,7 +2153,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2180,7 +2180,7 @@ export type UserCreateWithoutAccountsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2207,7 +2207,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy?: string | null
@@ -2250,7 +2250,7 @@ export type UserUpdateWithoutAccountsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2277,7 +2277,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2304,7 +2304,7 @@ export type UserCreateManyCreatorInput = {
   avatar?: string | null
   location?: string | null
   active?: boolean
-  gander?: string | null
+  gender?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   name: string
@@ -2320,7 +2320,7 @@ export type UserUpdateWithoutCreatorInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2347,7 +2347,7 @@ export type UserUncheckedUpdateWithoutCreatorInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2374,7 +2374,7 @@ export type UserUncheckedUpdateManyWithoutCreatorInput = {
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gander?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2511,7 +2511,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   avatar?: boolean
   location?: boolean
   active?: boolean
-  gander?: boolean
+  gender?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2541,7 +2541,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   avatar?: boolean
   location?: boolean
   active?: boolean
-  gander?: boolean
+  gender?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2559,7 +2559,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   avatar?: boolean
   location?: boolean
   active?: boolean
-  gander?: boolean
+  gender?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2577,7 +2577,7 @@ export type UserSelectScalar = {
   avatar?: boolean
   location?: boolean
   active?: boolean
-  gander?: boolean
+  gender?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   createdBy?: boolean
@@ -2586,7 +2586,7 @@ export type UserSelectScalar = {
   image?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "email" | "phoneNo" | "avatar" | "location" | "active" | "gander" | "createdAt" | "updatedAt" | "createdBy" | "name" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "email" | "phoneNo" | "avatar" | "location" | "active" | "gender" | "createdAt" | "updatedAt" | "createdBy" | "name" | "emailVerified" | "image", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.User$creatorArgs<ExtArgs>
   createdUsers?: boolean | Prisma.User$createdUsersArgs<ExtArgs>
@@ -2633,7 +2633,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     avatar: string | null
     location: string | null
     active: boolean
-    gander: string | null
+    gender: string | null
     createdAt: Date
     updatedAt: Date
     createdBy: string | null
@@ -3082,7 +3082,7 @@ export interface UserFieldRefs {
   readonly avatar: Prisma.FieldRef<"User", 'String'>
   readonly location: Prisma.FieldRef<"User", 'String'>
   readonly active: Prisma.FieldRef<"User", 'Boolean'>
-  readonly gander: Prisma.FieldRef<"User", 'String'>
+  readonly gender: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdBy: Prisma.FieldRef<"User", 'String'>

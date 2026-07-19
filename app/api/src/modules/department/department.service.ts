@@ -1,4 +1,4 @@
-import { getTenantClient, prisma } from '@org/database';
+import { prisma } from '@org/database';
 import { CreateDepartmentInput } from '@org/zod';
 import { readableId } from '../../core/utils/utils';
 
@@ -31,9 +31,9 @@ export class DepartmentService {
     input: CreateDepartmentInput;
     organizationId: string;
   }) => {
-    const tenantDb = getTenantClient(organizationId);
-    const data = await tenantDb.department.update({
+    const data = await prisma.department.update({
       where: {
+        organizationId,
         id,
       },
       data: {
@@ -43,10 +43,10 @@ export class DepartmentService {
     return data;
   };
   static getall = async ({ organizationId }: { organizationId: string }) => {
-    const tenantDb = getTenantClient(organizationId);
-    const data = await tenantDb.department.findMany({
+    const data = await prisma.department.findMany({
       where: {
         active: true,
+        organizationId,
       },
     });
     return data;
@@ -58,10 +58,10 @@ export class DepartmentService {
     id: string;
     organizationId: string;
   }) => {
-    const tenantDb = getTenantClient(organizationId);
-    const data = await tenantDb.department.update({
+    const data = await prisma.department.update({
       where: {
         id,
+        organizationId,
       },
       data: {
         active: false,
