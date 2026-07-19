@@ -20,7 +20,8 @@ const navMainItems = [
     title: 'Dashboard',
     url: '/',
     icon: <HugeiconsIcon icon={DashboardSquare01Icon} strokeWidth={2} />,
-  },  {
+  },
+  {
     title: 'Departments',
     url: '/department',
     icon: <HugeiconsIcon icon={DashboardSquare01Icon} strokeWidth={2} />,
@@ -35,11 +36,6 @@ const navMainItems = [
     title: 'Roles & Permissions',
     url: '/rbac',
     icon: <HugeiconsIcon icon={SecurityLockIcon} strokeWidth={2} />,
-  },
-  {
-    title: 'Activity Logs',
-    url: '/activity',
-    icon: <HugeiconsIcon icon={Activity01Icon} strokeWidth={2} />,
   },
   {
     title: 'Settings',

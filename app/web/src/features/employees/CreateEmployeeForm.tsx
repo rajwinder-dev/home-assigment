@@ -1,5 +1,4 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, useForm } from 'react-hook-form';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -10,8 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { createEmployeeInput, type CreateEmployeeInput } from '@org/zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useEmployee, useLookupHook } from '@org/core';
+import { createEmployeeInput, type CreateEmployeeInput } from '@org/zod';
+import { Info } from 'lucide-react';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'sonner';
 
@@ -42,6 +44,9 @@ export function CreateEmployeeForm() {
     resolver: zodResolver(createEmployeeInput.bodySchema),
   });
 
+  const noDepartmentsAvailable =
+    !isLoadingDepartments && (departmentsData?.data?.length ?? 0) === 0;
+
   const onSubmit = (data: CreateEmployeeInput) => {
     createEmployee(data, {
       onSuccess: () => {
@@ -56,6 +61,17 @@ export function CreateEmployeeForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-8">
+      {noDepartmentsAvailable && (
+        <Alert className="">
+          <Info className="h-4 w-4" />
+          <AlertTitle>No departments available</AlertTitle>
+          <AlertDescription>
+            Create a department first so this employee form can be completed
+            with a valid department selection.
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Username */}
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">

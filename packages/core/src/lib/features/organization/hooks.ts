@@ -9,11 +9,6 @@ interface props {
 }
 export const useOrganizations = ({ orgId }: props) => {
   const queryClient = useQueryClient();
-  const { data: onboardSatus } = useQuery({
-    queryFn: orgApi.onboardStatus,
-    enabled: !!orgId,
-    queryKey: ['organization', 'onboarding-status', { orgId }],
-  });
   // --- Queries ---
   const { data: organizations, isLoading: isLoadingOrganizations } = useQuery({
     queryFn: orgApi.getMine,
@@ -58,7 +53,6 @@ export const useOrganizations = ({ orgId }: props) => {
     isUpdatingOrg,
     deleteOrg,
     isDeletingOrg,
-    onboardSatus,
     currentOrganization,
     isLoadingCurrent,
   };
