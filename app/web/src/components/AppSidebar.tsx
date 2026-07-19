@@ -7,7 +7,6 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar';
 import {
-  Activity01Icon,
   DashboardSquare01Icon,
   SecurityLockIcon,
   Settings05Icon,
