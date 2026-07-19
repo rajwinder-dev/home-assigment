@@ -265,7 +265,6 @@ export type UserWhereInput = {
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   departments?: Prisma.DepartmentListRelationFilter
-  reportingManger?: Prisma.MembershipListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -294,7 +293,6 @@ export type UserOrderByWithRelationInput = {
   TokenCreatedBy?: Prisma.TokenOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   departments?: Prisma.DepartmentOrderByRelationAggregateInput
-  reportingManger?: Prisma.MembershipOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -326,7 +324,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   TokenCreatedBy?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   departments?: Prisma.DepartmentListRelationFilter
-  reportingManger?: Prisma.MembershipListRelationFilter
 }, "id" | "code" | "email" | "phoneNo">
 
 export type UserOrderByWithAggregationInput = {
@@ -394,7 +391,6 @@ export type UserCreateInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -422,7 +418,6 @@ export type UserUncheckedCreateInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUpdateInput = {
@@ -450,7 +445,6 @@ export type UserUpdateInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -478,7 +472,6 @@ export type UserUncheckedUpdateInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -698,30 +691,12 @@ export type UserCreateNestedOneWithoutMembershipInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserCreateNestedOneWithoutReportingMangerInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportingMangerInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutMembershipNestedInput = {
+export type UserUpdateOneRequiredWithoutMembershipNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutMembershipInput, Prisma.UserUncheckedCreateWithoutMembershipInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembershipInput
   upsert?: Prisma.UserUpsertWithoutMembershipInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembershipInput, Prisma.UserUpdateWithoutMembershipInput>, Prisma.UserUncheckedUpdateWithoutMembershipInput>
-}
-
-export type UserUpdateOneWithoutReportingMangerNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportingMangerInput
-  upsert?: Prisma.UserUpsertWithoutReportingMangerInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportingMangerInput, Prisma.UserUpdateWithoutReportingMangerInput>, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
 }
 
 export type UserCreateNestedOneWithoutCreatedRolesInput = {
@@ -856,7 +831,6 @@ export type UserCreateWithoutCreatedUsersInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatedUsersInput = {
@@ -883,7 +857,6 @@ export type UserUncheckedCreateWithoutCreatedUsersInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatedUsersInput = {
@@ -915,7 +888,6 @@ export type UserCreateWithoutCreatorInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatorInput = {
@@ -942,7 +914,6 @@ export type UserUncheckedCreateWithoutCreatorInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatorInput = {
@@ -990,7 +961,6 @@ export type UserUpdateWithoutCreatedUsersInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedUsersInput = {
@@ -1017,7 +987,6 @@ export type UserUncheckedUpdateWithoutCreatedUsersInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -1080,7 +1049,6 @@ export type UserCreateWithoutOrganizationInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationInput = {
@@ -1107,7 +1075,6 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationInput = {
@@ -1150,7 +1117,6 @@ export type UserUpdateWithoutOrganizationInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationInput = {
@@ -1177,7 +1143,6 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutMembershipInput = {
@@ -1204,7 +1169,6 @@ export type UserCreateWithoutMembershipInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutMembershipInput = {
@@ -1231,71 +1195,11 @@ export type UserUncheckedCreateWithoutMembershipInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutMembershipInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutMembershipInput, Prisma.UserUncheckedCreateWithoutMembershipInput>
-}
-
-export type UserCreateWithoutReportingMangerInput = {
-  id?: string
-  code?: string | null
-  email: string
-  phoneNo?: string | null
-  avatar?: string | null
-  location?: string | null
-  active?: boolean
-  gender?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  name: string
-  emailVerified?: boolean
-  image?: string | null
-  creator?: Prisma.UserCreateNestedOneWithoutCreatedUsersInput
-  createdUsers?: Prisma.UserCreateNestedManyWithoutCreatorInput
-  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutActorInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  createdRoles?: Prisma.RoleCreateNestedManyWithoutCreatorInput
-  organization?: Prisma.OrganizationCreateNestedManyWithoutUserInput
-  membership?: Prisma.MembershipCreateNestedManyWithoutUserInput
-  token?: Prisma.TokenCreateNestedManyWithoutUserInput
-  TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutReportingMangerInput = {
-  id?: string
-  code?: string | null
-  email: string
-  phoneNo?: string | null
-  avatar?: string | null
-  location?: string | null
-  active?: boolean
-  gender?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  createdBy?: string | null
-  name: string
-  emailVerified?: boolean
-  image?: string | null
-  createdUsers?: Prisma.UserUncheckedCreateNestedManyWithoutCreatorInput
-  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutActorInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  createdRoles?: Prisma.RoleUncheckedCreateNestedManyWithoutCreatorInput
-  organization?: Prisma.OrganizationUncheckedCreateNestedManyWithoutUserInput
-  membership?: Prisma.MembershipUncheckedCreateNestedManyWithoutUserInput
-  token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
-  TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutReportingMangerInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
 }
 
 export type UserUpsertWithoutMembershipInput = {
@@ -1333,7 +1237,6 @@ export type UserUpdateWithoutMembershipInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipInput = {
@@ -1356,72 +1259,6 @@ export type UserUncheckedUpdateWithoutMembershipInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatorNestedInput
   organization?: Prisma.OrganizationUncheckedUpdateManyWithoutUserNestedInput
-  token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
-  TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
-}
-
-export type UserUpsertWithoutReportingMangerInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutReportingMangerInput, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutReportingMangerInput, Prisma.UserUncheckedCreateWithoutReportingMangerInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutReportingMangerInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutReportingMangerInput, Prisma.UserUncheckedUpdateWithoutReportingMangerInput>
-}
-
-export type UserUpdateWithoutReportingMangerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  creator?: Prisma.UserUpdateOneWithoutCreatedUsersNestedInput
-  createdUsers?: Prisma.UserUpdateManyWithoutCreatorNestedInput
-  activityLogs?: Prisma.ActivityLogUpdateManyWithoutActorNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  createdRoles?: Prisma.RoleUpdateManyWithoutCreatorNestedInput
-  organization?: Prisma.OrganizationUpdateManyWithoutUserNestedInput
-  membership?: Prisma.MembershipUpdateManyWithoutUserNestedInput
-  token?: Prisma.TokenUpdateManyWithoutUserNestedInput
-  TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutReportingMangerInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phoneNo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  createdBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdUsers?: Prisma.UserUncheckedUpdateManyWithoutCreatorNestedInput
-  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutActorNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  createdRoles?: Prisma.RoleUncheckedUpdateManyWithoutCreatorNestedInput
-  organization?: Prisma.OrganizationUncheckedUpdateManyWithoutUserNestedInput
-  membership?: Prisma.MembershipUncheckedUpdateManyWithoutUserNestedInput
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -1452,7 +1289,6 @@ export type UserCreateWithoutCreatedRolesInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutCreatedRolesInput = {
@@ -1479,7 +1315,6 @@ export type UserUncheckedCreateWithoutCreatedRolesInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutCreatedRolesInput = {
@@ -1522,7 +1357,6 @@ export type UserUpdateWithoutCreatedRolesInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedRolesInput = {
@@ -1549,7 +1383,6 @@ export type UserUncheckedUpdateWithoutCreatedRolesInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutDepartmentsInput = {
@@ -1576,7 +1409,6 @@ export type UserCreateWithoutDepartmentsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutDepartmentsInput = {
@@ -1603,7 +1435,6 @@ export type UserUncheckedCreateWithoutDepartmentsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutDepartmentsInput = {
@@ -1646,7 +1477,6 @@ export type UserUpdateWithoutDepartmentsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepartmentsInput = {
@@ -1673,7 +1503,6 @@ export type UserUncheckedUpdateWithoutDepartmentsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutTokenInput = {
@@ -1700,7 +1529,6 @@ export type UserCreateWithoutTokenInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutTokenInput = {
@@ -1727,7 +1555,6 @@ export type UserUncheckedCreateWithoutTokenInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutTokenInput = {
@@ -1759,7 +1586,6 @@ export type UserCreateWithoutTokenCreatedByInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutTokenCreatedByInput = {
@@ -1786,7 +1612,6 @@ export type UserUncheckedCreateWithoutTokenCreatedByInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutTokenCreatedByInput = {
@@ -1829,7 +1654,6 @@ export type UserUpdateWithoutTokenInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenInput = {
@@ -1856,7 +1680,6 @@ export type UserUncheckedUpdateWithoutTokenInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUpsertWithoutTokenCreatedByInput = {
@@ -1894,7 +1717,6 @@ export type UserUpdateWithoutTokenCreatedByInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
@@ -1921,7 +1743,6 @@ export type UserUncheckedUpdateWithoutTokenCreatedByInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutActivityLogsInput = {
@@ -1948,7 +1769,6 @@ export type UserCreateWithoutActivityLogsInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutActivityLogsInput = {
@@ -1975,7 +1795,6 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutActivityLogsInput = {
@@ -2018,7 +1837,6 @@ export type UserUpdateWithoutActivityLogsInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityLogsInput = {
@@ -2045,7 +1863,6 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -2072,7 +1889,6 @@ export type UserCreateWithoutSessionsInput = {
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -2099,7 +1915,6 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -2142,7 +1957,6 @@ export type UserUpdateWithoutSessionsInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -2169,7 +1983,6 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -2196,7 +2009,6 @@ export type UserCreateWithoutAccountsInput = {
   token?: Prisma.TokenCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenCreateNestedManyWithoutTokenCreatedByInput
   departments?: Prisma.DepartmentCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -2223,7 +2035,6 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   token?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   TokenCreatedBy?: Prisma.TokenUncheckedCreateNestedManyWithoutTokenCreatedByInput
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUserInput
-  reportingManger?: Prisma.MembershipUncheckedCreateNestedManyWithoutRepotingMangerInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -2266,7 +2077,6 @@ export type UserUpdateWithoutAccountsInput = {
   token?: Prisma.TokenUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -2293,7 +2103,6 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   token?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserCreateManyCreatorInput = {
@@ -2336,7 +2145,6 @@ export type UserUpdateWithoutCreatorInput = {
   TokenCreatedBy?: Prisma.TokenUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatorInput = {
@@ -2363,7 +2171,6 @@ export type UserUncheckedUpdateWithoutCreatorInput = {
   TokenCreatedBy?: Prisma.TokenUncheckedUpdateManyWithoutTokenCreatedByNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUserNestedInput
-  reportingManger?: Prisma.MembershipUncheckedUpdateManyWithoutRepotingMangerNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCreatorInput = {
@@ -2398,7 +2205,6 @@ export type UserCountOutputType = {
   TokenCreatedBy: number
   accounts: number
   departments: number
-  reportingManger: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2412,7 +2218,6 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   TokenCreatedBy?: boolean | UserCountOutputTypeCountTokenCreatedByArgs
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
-  reportingManger?: boolean | UserCountOutputTypeCountReportingMangerArgs
 }
 
 /**
@@ -2495,13 +2300,6 @@ export type UserCountOutputTypeCountDepartmentsArgs<ExtArgs extends runtime.Type
   where?: Prisma.DepartmentWhereInput
 }
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountReportingMangerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MembershipWhereInput
-}
-
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2529,7 +2327,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
-  reportingManger?: boolean | Prisma.User$reportingMangerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2599,7 +2396,6 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   TokenCreatedBy?: boolean | Prisma.User$TokenCreatedByArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
-  reportingManger?: boolean | Prisma.User$reportingMangerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2623,7 +2419,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     TokenCreatedBy: Prisma.$TokenPayload<ExtArgs>[]
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     departments: Prisma.$DepartmentPayload<ExtArgs>[]
-    reportingManger: Prisma.$MembershipPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3045,7 +2840,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   TokenCreatedBy<T extends Prisma.User$TokenCreatedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TokenCreatedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   departments<T extends Prisma.User$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  reportingManger<T extends Prisma.User$reportingMangerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportingMangerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3746,30 +3540,6 @@ export type User$departmentsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.DepartmentScalarFieldEnum | Prisma.DepartmentScalarFieldEnum[]
-}
-
-/**
- * User.reportingManger
- */
-export type User$reportingMangerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Membership
-   */
-  select?: Prisma.MembershipSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Membership
-   */
-  omit?: Prisma.MembershipOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MembershipInclude<ExtArgs> | null
-  where?: Prisma.MembershipWhereInput
-  orderBy?: Prisma.MembershipOrderByWithRelationInput | Prisma.MembershipOrderByWithRelationInput[]
-  cursor?: Prisma.MembershipWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MembershipScalarFieldEnum | Prisma.MembershipScalarFieldEnum[]
 }
 
 /**

@@ -68,9 +68,11 @@ const employeeResponseSchema = z.object({
   designation: z.string(),
   joiningDate: z.date(),
   department: departmentSchema,
-  repotingManger: z.object({
-    name: z.string(),
-    id: z.string(),
+  reportingManager: z.object({
+    user: z.object({
+      name: z.string(),
+      id: z.string(),
+    }),
   }),
   active: z.boolean(),
   role: roleSchema,

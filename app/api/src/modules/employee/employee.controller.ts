@@ -50,10 +50,14 @@ export class EmployeeController {
         salary: true,
         designation: true,
         joiningDate: true,
-        repotingManger: {
+        reportingManager: {
           select: {
-            name: true,
-            id: true,
+            user: {
+              select: {
+                name: true,
+                id: true,
+              },
+            },
           },
         },
         active: true,
@@ -88,6 +92,7 @@ export class EmployeeController {
         ...filterOptions.where,
       },
     });
+    console.log(membership);
     response(res, membership, 200, {
       otherFields: { limit, offset, total },
       schema: z.array(memberSchemaResponse),
@@ -111,21 +116,17 @@ export class EmployeeController {
     response(res, data);
   });
   static updateManager = catchAsync(async (req, res) => {
-    const { userId, managerId } = req.params as {
+    const { mangerMembershipId, userId } = req.params as {
+      mangerMembershipId: string;
       userId: string;
-      managerId: string;
     };
-    console.log(userId, managerId);
+
+    if(mangerMembershipId === userId) throw new appError('You can not assign yourself as manager', 403);
     const data = await prisma.membership.update({
       where: {
-        organizationId_userId: {
-          organizationId: req.organization.id,
-          userId,
-        },
+        organizationId_userId: { organizationId: req.organization.id, userId },
       },
-      data: {
-        managerId,
-      },
+      data: { managerId: mangerMembershipId },
     });
     response(res, data);
   });

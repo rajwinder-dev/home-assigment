@@ -419,9 +419,9 @@ export type RoleOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RoleNullableScalarRelationFilter = {
-  is?: Prisma.RoleWhereInput | null
-  isNot?: Prisma.RoleWhereInput | null
+export type RoleScalarRelationFilter = {
+  is?: Prisma.RoleWhereInput
+  isNot?: Prisma.RoleWhereInput
 }
 
 export type RoleCountOrderByAggregateInput = {
@@ -462,6 +462,11 @@ export type RoleMinOrderByAggregateInput = {
   createdBy?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
   isSystem?: Prisma.SortOrder
+}
+
+export type RoleNullableScalarRelationFilter = {
+  is?: Prisma.RoleWhereInput | null
+  isNot?: Prisma.RoleWhereInput | null
 }
 
 export type RoleCreateNestedManyWithoutCreatorInput = {
@@ -554,12 +559,10 @@ export type RoleCreateNestedOneWithoutMembershipInput = {
   connect?: Prisma.RoleWhereUniqueInput
 }
 
-export type RoleUpdateOneWithoutMembershipNestedInput = {
+export type RoleUpdateOneRequiredWithoutMembershipNestedInput = {
   create?: Prisma.XOR<Prisma.RoleCreateWithoutMembershipInput, Prisma.RoleUncheckedCreateWithoutMembershipInput>
   connectOrCreate?: Prisma.RoleCreateOrConnectWithoutMembershipInput
   upsert?: Prisma.RoleUpsertWithoutMembershipInput
-  disconnect?: Prisma.RoleWhereInput | boolean
-  delete?: Prisma.RoleWhereInput | boolean
   connect?: Prisma.RoleWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.RoleUpdateToOneWithWhereWithoutMembershipInput, Prisma.RoleUpdateWithoutMembershipInput>, Prisma.RoleUncheckedUpdateWithoutMembershipInput>
 }

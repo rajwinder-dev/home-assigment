@@ -298,7 +298,7 @@ export function EmployeeTable() {
                         )}
                       </TableCell>
                       <TableCell className="text-sm">
-                        {employee.repotingManger?.name ?? (
+                        {employee.reportingManager?.user.name ?? (
                           <span className="text-muted-foreground/50 text-[11px]">
                             —
                           </span>

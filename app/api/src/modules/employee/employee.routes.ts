@@ -28,7 +28,7 @@ employeeRouter.patch(
   EmployeeController.updateRole,
 );
 employeeRouter.patch(
-  '/:managerId/manager/:userId',
+  '/:mangerMembershipId/manager/:userId',
   authMiddleware.restrictToOwner,
   EmployeeController.updateManager,
 );

@@ -550,6 +550,11 @@ export type OrganizationSumOrderByAggregateInput = {
   teamSize?: Prisma.SortOrder
 }
 
+export type OrganizationScalarRelationFilter = {
+  is?: Prisma.OrganizationWhereInput
+  isNot?: Prisma.OrganizationWhereInput
+}
+
 export type OrganizationNullableScalarRelationFilter = {
   is?: Prisma.OrganizationWhereInput | null
   isNot?: Prisma.OrganizationWhereInput | null
@@ -611,12 +616,10 @@ export type OrganizationCreateNestedOneWithoutMembershipInput = {
   connect?: Prisma.OrganizationWhereUniqueInput
 }
 
-export type OrganizationUpdateOneWithoutMembershipNestedInput = {
+export type OrganizationUpdateOneRequiredWithoutMembershipNestedInput = {
   create?: Prisma.XOR<Prisma.OrganizationCreateWithoutMembershipInput, Prisma.OrganizationUncheckedCreateWithoutMembershipInput>
   connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutMembershipInput
   upsert?: Prisma.OrganizationUpsertWithoutMembershipInput
-  disconnect?: Prisma.OrganizationWhereInput | boolean
-  delete?: Prisma.OrganizationWhereInput | boolean
   connect?: Prisma.OrganizationWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutMembershipInput, Prisma.OrganizationUpdateWithoutMembershipInput>, Prisma.OrganizationUncheckedUpdateWithoutMembershipInput>
 }

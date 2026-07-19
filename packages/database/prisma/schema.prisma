@@ -11,32 +11,31 @@ datasource db {
 //  ============================ USERS / ROLES / ORG ==============================
 
 model User {
-  id              String         @id @default(uuid()) @db.Uuid
-  code            String?        @unique
-  email           String         @unique
-  phoneNo         String?        @unique
-  avatar          String?
-  location        String?
-  active          Boolean        @default(true)
-  gender          String?
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  creator         User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
-  createdBy       String?        @db.Uuid
-  createdUsers    User[]         @relation("UserCreatedBy")
-  activityLogs    ActivityLog[]
-  sessions        Session[]
-  createdRoles    Role[]         @relation("RoleCreatedBy")
-  organization    Organization[]
-  membership      Membership[]
-  token           Token[]
-  TokenCreatedBy  Token[]        @relation("TokenCreatedBy")
-  name            String
-  emailVerified   Boolean        @default(false)
-  image           String?
-  accounts        Account[]
-  departments     Department[]
-  reportingManger Membership[]   @relation("repotingManager")
+  id             String         @id @default(uuid()) @db.Uuid
+  code           String?        @unique
+  email          String         @unique
+  phoneNo        String?        @unique
+  avatar         String?
+  location       String?
+  active         Boolean        @default(true)
+  gender         String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  creator        User?          @relation("UserCreatedBy", fields: [createdBy], references: [id])
+  createdBy      String?        @db.Uuid
+  createdUsers   User[]         @relation("UserCreatedBy")
+  activityLogs   ActivityLog[]
+  sessions       Session[]
+  createdRoles   Role[]         @relation("RoleCreatedBy")
+  organization   Organization[]
+  membership     Membership[]
+  token          Token[]
+  TokenCreatedBy Token[]        @relation("TokenCreatedBy")
+  name           String
+  emailVerified  Boolean        @default(false)
+  image          String?
+  accounts       Account[]
+  departments    Department[]
 
   @@index([createdBy])
   @@index([active])
@@ -68,26 +67,28 @@ model Organization {
 }
 
 model Membership {
-  id             String        @id @default(uuid()) @db.Uuid
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId String       @db.Uuid
-  user           User?         @relation(fields: [userId], references: [id])
-  userId         String        @db.Uuid
-  repotingManger User?         @relation("repotingManager", fields: [managerId], references: [id])
-  managerId      String?       @db.Uuid
-  role           Role?         @relation(fields: [roleId], references: [id])
-  roleId         String        @db.Uuid
-  department     Department?   @relation(fields: [departmentId], references: [id])
-  departmentId   String?        @db.Uuid
-  createdAt      DateTime      @default(now())
-  designation    String?
-  salary         Float?      
-  joiningDate    DateTime?
-  active         Boolean       @default(true)
-  isSystem Boolean @default(false)
+  id               String       @id @default(uuid()) @db.Uuid
+  organization     Organization @relation(fields: [organizationId], references: [id])
+  organizationId   String       @db.Uuid
+  user             User         @relation(fields: [userId], references: [id])
+  userId           String       @db.Uuid
+  reportingManager Membership?  @relation("ReportingManager", fields: [managerId], references: [id])
+  managerId        String?      @db.Uuid
+  directReports    Membership[] @relation("ReportingManager")
+  role             Role         @relation(fields: [roleId], references: [id])
+  roleId           String       @db.Uuid
+  department       Department?  @relation(fields: [departmentId], references: [id])
+  departmentId     String?      @db.Uuid
+  createdAt        DateTime     @default(now())
+  designation      String?
+  salary           Float?
+  joiningDate      DateTime?
+  active           Boolean      @default(true)
+  isSystem         Boolean      @default(false)
 
   @@unique([organizationId, userId])
   @@index([roleId])
+  @@index([managerId])
 }
 
 model Role {

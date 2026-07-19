@@ -47,7 +47,6 @@ export class LookupController {
       },
       select: {
         id: true,
-        userId: true,
         user: {
           select: {
             name: true,
@@ -56,7 +55,7 @@ export class LookupController {
       },
     });
     const output = data.map((item) => ({
-      id: item.userId,
+      id: item.id,
       name: item.user?.name,
     }));
 
