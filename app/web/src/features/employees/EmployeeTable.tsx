@@ -1,5 +1,7 @@
 import { Pagination } from '@/components/Pagination';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Select,
@@ -17,52 +19,181 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { useState } from 'react';
+import { ArrowDown, ArrowUp, Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 import { useEmployee, useLookupHook } from '@org/core';
 import { useParams } from 'react-router';
 import { Avatar } from '../members/components/MemberBandges';
 import { RowActionsMenu } from './RowActionsMenu';
+import { FilterOptions } from '@/types/axis.types';
+
+const SORT_FIELDS = [
+  { value: 'joiningDate', label: 'Joining date' },
+  { value: 'name', label: 'Name' },
+] as const;
+
+const STATUS_OPTIONS = [
+  { value: 'true', label: 'Active' },
+  { value: 'false', label: 'Inactive' },
+] as const;
 
 export function EmployeeTable() {
   const { orgId } = useParams();
-  const { rolesData } = useLookupHook({ orgId });
-  const [pagination, setPagination] = useState({
-    offset: 0,
-    limit: 20,
-  });
+  const { rolesData, departmentsData } = useLookupHook({ orgId });
+
+  const [pagination, setPagination] = useState({ offset: 0, limit: 20 });
   const [roleId, setRoleId] = useState<string | undefined>();
+  const [deptId, setDeptId] = useState<string | undefined>();
+  const [active, setActive] = useState<string | undefined>();
+  const [searchInput, setSearchInput] = useState('');
+  const [search, setSearch] = useState('');
+  const [sortby, setSortby] = useState<string | undefined>('joiningDate');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+  // debounce search input -> search
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSearch(searchInput.trim());
+      setPagination((p) => ({ ...p, offset: 0 }));
+    }, 350);
+    return () => clearTimeout(timeout);
+  }, [searchInput]);
+
+  const filterOptions: FilterOptions = {
+    offset: pagination.offset,
+    limit: pagination.limit,
+    filter: {
+      ...(roleId && roleId !== 'ALL' && { roleId }),
+      ...(deptId && deptId !== 'ALL' && { departmentId: deptId }),
+      ...(active && active !== 'ALL' && { active }),
+    },
+    ...(search && { search: { searchBy: 'name', search } }),
+    ...(sortby && { sorting: { sortby, sortOrder } }),
+  };
 
   const { employees, isLoadingEmployees } = useEmployee({
-    filterOptions: {
-      offset: pagination.offset,
-      limit: pagination.limit,
-      filter: {
-        ...(roleId && roleId !== 'ALL' && { roleId }),
-      },
-    },
+    filterOptions,
     orgId,
   });
 
+  const toggleSortOrder = () =>
+    setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+
   return (
     <>
-      <div className="flex flex-wrap items-center justify-end gap-2 p-2">
-        {/* Role filter */}
-        <Select onValueChange={setRoleId} disabled={isLoadingEmployees}>
-          <SelectTrigger className="h-8 w-32 text-xs">
-            <SelectValue placeholder="All roles" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="ALL">All roles</SelectItem>
-            {rolesData?.data.map((item) => (
-              <SelectItem key={item.id} value={item.id}>
-                {item.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <div className="flex flex-wrap items-center justify-between gap-2 p-2">
+        {/* Search */}
+        <div className="relative w-56">
+          <Search className="text-muted-foreground absolute top-1/2 left-2 h-3.5 w-3.5 -translate-y-1/2" />
+          <Input
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search by name..."
+            className="h-8 pl-7 text-xs"
+          />
+        </div>
 
-        {/* Invite / Add employee */}
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Department filter */}
+          <Select
+            onValueChange={(v) => {
+              setDeptId(v);
+              setPagination((p) => ({ ...p, offset: 0 }));
+            }}
+            disabled={isLoadingEmployees}
+          >
+            <SelectTrigger className="h-8 w-36 text-xs">
+              <SelectValue placeholder="All departments" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ALL">All departments</SelectItem>
+              {departmentsData?.data.map((item) => (
+                <SelectItem key={item.id} value={item.id}>
+                  {item.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Role filter */}
+          <Select
+            onValueChange={(v) => {
+              setRoleId(v);
+              setPagination((p) => ({ ...p, offset: 0 }));
+            }}
+            disabled={isLoadingEmployees}
+          >
+            <SelectTrigger className="h-8 w-32 text-xs">
+              <SelectValue placeholder="All roles" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ALL">All roles</SelectItem>
+              {rolesData?.data.map((item) => (
+                <SelectItem key={item.id} value={item.id}>
+                  {item.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Status filter */}
+          <Select
+            onValueChange={(v) => {
+              setActive(v);
+              setPagination((p) => ({ ...p, offset: 0 }));
+            }}
+            disabled={isLoadingEmployees}
+          >
+            <SelectTrigger className="h-8 w-28 text-xs">
+              <SelectValue placeholder="All status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ALL">All status</SelectItem>
+              {STATUS_OPTIONS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Sort field */}
+          <Select
+            value={sortby}
+            onValueChange={(v) => setSortby(v)}
+            disabled={isLoadingEmployees}
+          >
+            <SelectTrigger className="h-8 w-36 text-xs">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              {SORT_FIELDS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Sort order toggle */}
+          <Button
+            variant="outline"
+            size="icon-sm"
+            className="h-8 w-8"
+            onClick={toggleSortOrder}
+            disabled={!sortby || isLoadingEmployees}
+            aria-label="Toggle sort order"
+          >
+            {sortOrder === 'asc' ? (
+              <ArrowUp className="h-3.5 w-3.5" />
+            ) : (
+              <ArrowDown className="h-3.5 w-3.5" />
+            )}
+          </Button>
+
+          {/* Invite / Add employee */}
+        </div>
       </div>
       <div className="flex-1">
         <ScrollArea className="h-[calc(100vh-261px)]">
@@ -182,7 +313,9 @@ export function EmployeeTable() {
                           : ''}
                       </TableCell>
                       <TableCell>
-                        <Badge variant={employee.active ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={employee.active ? 'default' : 'secondary'}
+                        >
                           {employee.active ? 'Active' : 'Inactive'}
                         </Badge>
                       </TableCell>

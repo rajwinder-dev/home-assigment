@@ -1,8 +1,5 @@
-import { prisma } from '@org/database';
-import {
-  CreateEmployeeInput,
-  memberSchemaResponse,
-} from '@org/zod';
+import { Prisma, prisma } from '@org/database';
+import { CreateEmployeeInput, memberSchemaResponse } from '@org/zod';
 import z from 'zod';
 import { APIFeatures } from '../../core/utils/apiFeatures.js';
 import { catchAsync } from '../../core/utils/catchAsync.js';
@@ -26,13 +23,27 @@ export class EmployeeController {
     const { filterOptions, limit, offset } = new APIFeatures(req.query)
       .filter()
       .pagination()
+      .sort()
       .search();
+    const sorttype =
+      filterOptions.orderBy && Object.keys(filterOptions.orderBy)[0];
+    const sortOrder = sorttype
+      ? (filterOptions.orderBy as Record<string, 'asc' | 'desc'>)[sorttype]
+      : undefined;
+
+    const orderBy: Prisma.MembershipOrderByWithRelationInput | undefined =
+      sorttype === 'joiningDate'
+        ? { joiningDate: sortOrder }
+        : sorttype === 'name'
+          ? { user: { name: sortOrder } }
+          : undefined;
     const membership = await prisma.membership.findMany({
       where: {
         organizationId: req.organization.id,
         isSystem: false,
         ...filterOptions.where,
       },
+      orderBy,
       select: {
         id: true,
         createdAt: true,
@@ -104,7 +115,7 @@ export class EmployeeController {
       userId: string;
       managerId: string;
     };
-    console.log(userId, managerId)
+    console.log(userId, managerId);
     const data = await prisma.membership.update({
       where: {
         organizationId_userId: {

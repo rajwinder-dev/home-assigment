@@ -6,14 +6,14 @@ const DashboardMatrices = () => {
   const { summary, isLoadingSummary } = useDashboard({orgId});
 
   const metrics = [
-    { label: "Total employees", value: summary?.data.TOTAL },
-    { label: "Inactive employees", value: summary?.data.OPEN },
-    { label: "Active employee", value: summary?.data.IN_PROGRESS },
-    { label: "Departments", value: summary?.data.RESOLVED },
+    { label: "Total employees", value: summary?.data.totalEmployees },
+    { label: "Inactive employees", value: summary?.data.inactiveEmployes},
+    { label: "Active employee", value: summary?.data.activeEmployes },
+    { label: "Departments", value: summary?.data.departments },
   ];
 
   return (
-    <div className="grid border md:grid-cols-2 xl:grid-cols-5">
+    <div className="grid border md:grid-cols-2 xl:grid-cols-4">
       {isLoadingSummary
         ? // Render 5 loading skeletons that match the exact grid layout
           Array.from({ length: 5 }).map((_, i) => (
