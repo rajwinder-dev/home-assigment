@@ -57,8 +57,6 @@ services:
       - prisma-network
 
   email-worker:
-    build:
-      target: email-worker
     image: rajwindersxxx/ticket-management:email-worker
     env_file:
       - .env
