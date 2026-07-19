@@ -1,4 +1,24 @@
 services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - prisma-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      retries: 20
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: postgres -c listen_addresses='*'
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
   redis:
     image: redis:alpine
     restart: always
@@ -11,28 +31,33 @@ services:
     build:
       context: .
       target: api
-    image: rajwindersxxx/ticket-management:api
+    image: rajwindersxxx/employee-management:api
     env_file:
       - .env
     environment:
       - PORT=3000
       - REDIS_PORT=6379
       - REDIS_HOST=redis
-
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
+      - DIRECT_URL=postgresql://postgres:postgres@postgres:5432/postgres
+    command: sh -c "pnpm run setup:db && pnpm run start"
     healthcheck:
-      test: [
-        "CMD-SHELL",
-        'node -e "require(\"http\").get(\"http://localhost:3000/health\", (r) => process.exit(r.statusCode === 200 ? 0 : 1))"'
-      ]
+      test:
+        [
+          "CMD-SHELL",
+          'node -e "require(\"http\").get(\"http://localhost:3000/health\", (r) => process.exit(r.statusCode === 200 ? 0 : 1))"',
+        ]
       retries: 5
     depends_on:
-      - redis  
+      redis:
+        condition: service_started
+      postgres:
+        condition: service_healthy
     networks:
       - prisma-network
 
-  email-worker: 
+  email-worker:
     build:
-      context: .
       target: email-worker
     image: rajwindersxxx/ticket-management:email-worker
     env_file:
@@ -43,13 +68,13 @@ services:
     depends_on:
       - redis
     networks:
-      - prisma-network # ADDED: Essential so it can see the redis container
+      - prisma-network # Essential so it can see the redis container
 
   web:
     build:
       context: .
       target: web
-    image: rajwindersxxx/ticket-management:web
+    image: rajwindersxxx/employee-management:web
     ports:
       - "8080:80"
     depends_on:
@@ -62,4 +87,5 @@ networks:
   prisma-network:
 
 volumes:
+  postgres_data:
   redis-data:
