@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
-import { log } from "@org/utils";
+import dotenv from 'dotenv';
+import { log } from '@org/utils';
 dotenv.config();
 
 export const env = {
@@ -12,7 +12,7 @@ export const env = {
   port: process.env.BACKEND_PORT || 3000,
 };
 
-const required = ["betterAuthSecret", "betterAuthUrl"];
+const required = ['betterAuthSecret', 'betterAuthUrl'];
 for (const key of required) {
   if (!env[key as keyof typeof env]) {
     log.error(`Missing environment variable: ${key}`);

@@ -1,9 +1,8 @@
-import z, { ZodError, ZodIssue } from "zod";
-import { appError } from "../utils/appError.js";
-import { catchAsync } from "../utils/catchAsync.js";
+import z, { ZodError, ZodIssue } from 'zod';
+import { appError } from '../utils/appError.js';
+import { catchAsync } from '../utils/catchAsync.js';
 
-export function validationMiddleware
-({
+export function validationMiddleware({
   bodySchema,
   paramsSchema,
   querySchema,
@@ -20,7 +19,7 @@ export function validationMiddleware
           new appError(
             `BODY: ${formatZodErrorToMessage(result.error)}`,
             400,
-            "VALIDATION_ERROR",
+            'VALIDATION_ERROR',
             formatZodErrors(result.error),
           ),
         );
@@ -34,7 +33,7 @@ export function validationMiddleware
           new appError(
             `PARAMS: ${formatZodErrorToMessage(result.error)}`,
             400,
-            "VALIDATION_ERROR",
+            'VALIDATION_ERROR',
             formatZodErrors(result.error),
           ),
         );
@@ -48,7 +47,7 @@ export function validationMiddleware
           new appError(
             `QUERY: ${formatZodErrorToMessage(result.error)}`,
             400,
-            "VALIDATION_ERROR",
+            'VALIDATION_ERROR',
             formatZodErrors(result.error),
           ),
         );
@@ -60,7 +59,7 @@ export function validationMiddleware
 }
 function formatZodErrors(zodError: ZodError) {
   return zodError.issues.map((issue) => ({
-    field: issue.path.join("."),
+    field: issue.path.join('.'),
     message: issue.message,
   }));
 }
@@ -71,14 +70,14 @@ export function formatZodErrorToMessage(
     includePath?: boolean; // include field path
   },
 ): string {
-  const separator = options?.separator ?? ", ";
+  const separator = options?.separator ?? ', ';
   const includePath = options?.includePath ?? true;
 
-  if (!error?.issues?.length) return "Validation error";
+  if (!error?.issues?.length) return 'Validation error';
 
   const messages = error.issues.map((issue: ZodIssue) => {
-    const path = issue.path.join(".");
-    const baseMessage = issue.message || "Invalid value";
+    const path = issue.path.join('.');
+    const baseMessage = issue.message || 'Invalid value';
 
     if (!includePath || !path) return baseMessage;
 

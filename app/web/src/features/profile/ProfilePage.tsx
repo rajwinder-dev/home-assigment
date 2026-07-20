@@ -38,7 +38,7 @@ export const ProfilePage = () => {
         Unable to load profile.
       </div>
     );
-  }
+}
 
   const initials = (user.username || user.email || '?')
     .slice(0, 2)
