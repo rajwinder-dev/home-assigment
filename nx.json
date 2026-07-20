@@ -107,10 +107,10 @@
       "dependsOn": ["^generate", "generate"]
     },
     "dev": {
-      "dependsOn": ["^generate", "generate"]
+      "dependsOn": ["^generate", "generate", "^build"]
     },
     "serve": {
-      "dependsOn": ["^generate", "generate"]
+      "dependsOn": ["^generate", "generate", "^build"]
     },
     "test": {
       "dependsOn": ["^generate", "generate"]
