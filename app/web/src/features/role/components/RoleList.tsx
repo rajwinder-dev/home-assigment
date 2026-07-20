@@ -7,8 +7,7 @@ import { useParams } from 'react-router';
 
 export function RoleList() {
   const { orgId } = useParams();
-  const { roles, isLoadingRoles } = useRole({ orgId });
-
+  const { roles, isLoadingRoles, isLoadingRolesError } = useRole({ orgId });
   return (
     <div className="flex w-80 shrink-0 flex-col border-r">
       <div className="border-b px-4 py-3">
@@ -20,7 +19,7 @@ export function RoleList() {
           disabled={isLoadingRoles} // Prevent input interaction during loading state
         />
       </div>
-
+      {isLoadingRolesError &&<div className="text-red-500 justify-center flex p-4">{isLoadingRolesError.message}</div>}
       <div className="flex-1 space-y-2.5 overflow-y-auto p-3">
         {isLoadingRoles ? (
           // Renders a stack of structural skeletons matching the size/shape of your RoleCards

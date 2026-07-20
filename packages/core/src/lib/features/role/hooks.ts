@@ -9,7 +9,7 @@ export const useRole = ({ roleId, orgId }: props) => {
   const queryClient = useQueryClient();
 
   // --- Queries ---
-  const { data: roles, isLoading: isLoadingRoles } = useQuery({
+  const { data: roles, isLoading: isLoadingRoles, error: isLoadingRolesError } = useQuery({
     queryFn: roleApi.getAllRoles,
     queryKey: ['role', { orgId }],
     retry: false,
@@ -54,5 +54,6 @@ export const useRole = ({ roleId, orgId }: props) => {
     isUpdatingRole,
     deleteRole,
     isDeletingRole,
+    isLoadingRolesError,
   };
 };

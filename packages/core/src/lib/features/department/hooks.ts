@@ -7,33 +7,40 @@ interface props {
 export const useDepartment = ({ orgId }: props) => {
   const queryClient = useQueryClient();
 
-  const { data: departments, isLoading: isLoadingDepartments } = useQuery({
+  const {
+    data: departments,
+    isLoading: isLoadingDepartments,
+    error: errorLoadingDepartments,
+  } = useQuery({
     queryFn: departmentApi.getAlldepartments,
     queryKey: ['department', { orgId }],
     retry: false,
   });
   // --- Mutations ---
-  const { mutate: createDepartment, isPending: isCreatingDepartment } = useMutation({
-    mutationFn: (data: CreateDepartmentInput) => departmentApi.create(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['department', { orgId }] });
-    },
-  });
+  const { mutate: createDepartment, isPending: isCreatingDepartment } =
+    useMutation({
+      mutationFn: (data: CreateDepartmentInput) => departmentApi.create(data),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['department', { orgId }] });
+      },
+    });
 
-  const { mutate: updateDepartment, isPending: isUpdatingDepartment } = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: UpdateDepartmentInput }) =>
-      departmentApi.update(id, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['department', { orgId }] });
-    },
-  });
+  const { mutate: updateDepartment, isPending: isUpdatingDepartment } =
+    useMutation({
+      mutationFn: ({ id, data }: { id: string; data: UpdateDepartmentInput }) =>
+        departmentApi.update(id, data),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['department', { orgId }] });
+      },
+    });
 
-  const { mutate: deleteDepartment, isPending: isDeletingDepartment } = useMutation({
-    mutationFn: (roleId: string) => departmentApi.delete(roleId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['role', { orgId }] });
-    },
-  });
+  const { mutate: deleteDepartment, isPending: isDeletingDepartment } =
+    useMutation({
+      mutationFn: (roleId: string) => departmentApi.delete(roleId),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['role', { orgId }] });
+      },
+    });
 
   return {
     departments,
@@ -43,6 +50,7 @@ export const useDepartment = ({ orgId }: props) => {
     updateDepartment,
     isUpdatingDepartment,
     deleteDepartment,
-    isDeletingDepartment, 
+    isDeletingDepartment,
+    errorLoadingDepartments,
   };
 };

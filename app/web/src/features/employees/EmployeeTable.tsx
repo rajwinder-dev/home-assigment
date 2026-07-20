@@ -77,14 +77,19 @@ export function EmployeeTable() {
     ...(sortby && { sorting: { sortby, sortOrder } }),
   };
 
-  const { employees, isLoadingEmployees } = useEmployee({
+  const { employees, isLoadingEmployees, employeesError } = useEmployee({
     filterOptions,
     orgId,
   });
 
   const toggleSortOrder = () =>
     setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
-
+  if (employeesError)
+    return (
+      <div className="text-red-500 justify-center flex p-4">
+        {employeesError.message}
+      </div>
+    );
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-2 p-2">

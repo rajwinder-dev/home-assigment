@@ -33,12 +33,17 @@ interface Department {
 
 export function DepartmentsTable() {
   const { orgId } = useParams();
-  const { departments, isLoadingDepartments } = useDepartment({
-    orgId,
-  });
-  const [editingDepartment, setEditingDepartment] =
-    useState<Department | null>(null);
-
+  const { departments, isLoadingDepartments, errorLoadingDepartments } =
+    useDepartment({
+      orgId,
+    });
+  const [editingDepartment, setEditingDepartment] = useState<Department | null>(
+    null,
+  );
+  if (errorLoadingDepartments)
+    return (
+     <div className="text-red-500 flex justify-center p-4">{errorLoadingDepartments.message}</div>
+    );
   return (
     <>
       <div className="flex-1">
