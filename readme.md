@@ -13,7 +13,6 @@ EmployeeFlow is designed to showcase:
 - Multi-organization workspace navigation
 - Employee lifecycle management
 - Department and hierarchy modeling
-- Activity tracking and settings management
 
 This makes it a strong example of full-stack development, state management, API design, and UI implementation for an assignment or interview portfolio.
 
@@ -26,7 +25,6 @@ This makes it a strong example of full-stack development, state management, API 
 - Employee creation, editing, role assignment, and manager relationships
 - RBAC pages for roles and permissions
 - Settings screens for profile and organization configuration
-- Responsive dashboard experience built with React and Tailwind-based UI components
 
 ## Tech Stack
 
@@ -98,6 +96,7 @@ This starts the workspace services using Nx.
 ```bash
 docker compose up --build
 ```
+
 note: the compose file have email-worker it will setup and run the email service
 
 ## Assignment Context
