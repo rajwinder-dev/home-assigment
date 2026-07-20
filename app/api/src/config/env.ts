@@ -3,7 +3,6 @@ import { log } from "@org/utils";
 dotenv.config();
 
 export const env = {
-  encryptionKey: process.env.ENCRYPTION_KEY,
   wss: process.env.WSS,
   coreURL: process.env.CORE_URL,
   betterAuthUrl: process.env.BETTER_AUTH_URL,
@@ -13,7 +12,7 @@ export const env = {
   port: process.env.BACKEND_PORT || 3000,
 };
 
-const required = ["betterAuthSecret", "betterAuthUrl", "encryptionKey"];
+const required = ["betterAuthSecret", "betterAuthUrl"];
 for (const key of required) {
   if (!env[key as keyof typeof env]) {
     log.error(`Missing environment variable: ${key}`);

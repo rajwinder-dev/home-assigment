@@ -69,16 +69,26 @@ This makes it a strong example of full-stack development, state management, API 
 - pnpm
 - Docker (optional, for running supporting services)
 
+## Environment Configuration
+
+Copy the .env.example file to .env and update the values as needed.
+
 ### Installation
 
 ```bash
 pnpm install
 ```
 
+### Build packages
+
+```bash
+pnpm run build
+```
+
 ### Run the application locally
 
 ```bash
-pnpm dev
+pnpm run dev
 ```
 
 This starts the workspace services using Nx.
@@ -88,17 +98,7 @@ This starts the workspace services using Nx.
 ```bash
 docker compose up --build
 ```
-
-## Environment Configuration
-
-Before running the API locally, configure the required environment variables for the backend, including values such as:
-
-- BETTER_AUTH_SECRET
-- BETTER_AUTH_URL
-- ENCRYPTION_KEY
-- BACKEND_PORT (optional)
-
-The API configuration is defined in app/api/src/config/env.ts.
+note: the compose file have email-worker it will setup and run the email service
 
 ## Assignment Context
 
