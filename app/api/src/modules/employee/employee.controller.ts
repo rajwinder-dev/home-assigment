@@ -91,11 +91,17 @@ export class EmployeeController {
         ...filterOptions.where,
       },
     });
-    console.log(membership);
     response(res, membership, 200, {
       otherFields: { limit, offset, total },
       schema: z.array(memberSchemaResponse),
     });
+  });
+  static getMyDeatils = catchAsync(async (req, res) => {
+    const data = await EmployeeService.getMydetails({
+      userId: req.user.id,
+      organizationId: req.organization.id,
+    });
+    response(res, data, 200);
   });
   static updateRole = catchAsync(async (req, res) => {
     const { userId, roleId } = req.params as { userId: string; roleId: string };

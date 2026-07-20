@@ -12,8 +12,8 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { DepartmentPage } from './features/department/DepartmentPage';
 import EmployeePage from './features/employees/EmployeePage';
 import { CreateEmployeePage } from './features/employees/CreateEmployeePage';
-import { EditEmployeeForm } from './features/employees/EditEmployeeForm';
 import EmployeeEditPage from './features/employees/EmployeeEditPage';
+import { ProfilePage } from './features/profile/ProfilePage';
 
 const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'));
 const OrganizationPage = lazy(
@@ -93,12 +93,14 @@ const router = createBrowserRouter([
             errorElement: <ErrorBoundary />,
             children: [
               { index: true, element: <DashboardPage /> },
+              { path: 'profile', element: <ProfilePage /> },
               { path: 'rbac', element: <RolePage /> },
               { path: 'activity', element: <ActivityPage /> },
               { path: 'department', element: <DepartmentPage /> },
               { path: 'employee', element: <EmployeePage /> },
               { path: 'employee/create', element: <CreateEmployeePage /> },
-              {path: 'employee/:employeeId', element: <EmployeeEditPage />},
+
+              { path: 'employee/:employeeId', element: <EmployeeEditPage /> },
               {
                 path: 'setting',
                 element: <SettingsLayout />,

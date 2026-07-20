@@ -10,6 +10,7 @@ import {
   DashboardSquare01Icon,
   SecurityLockIcon,
   Settings05Icon,
+  User,
   UserGroupIcon,
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -19,6 +20,11 @@ const navMainItems = [
     title: 'Dashboard',
     url: '/',
     icon: <HugeiconsIcon icon={DashboardSquare01Icon} strokeWidth={2} />,
+  },
+  {
+    title: 'Profile',
+    url: '/profile',
+    icon: <HugeiconsIcon icon={User} strokeWidth={2} />,
   },
   {
     title: 'Departments',

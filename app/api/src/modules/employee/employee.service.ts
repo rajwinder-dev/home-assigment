@@ -4,6 +4,30 @@ import { prisma } from '@org/database';
 import { RoleService } from '../role/role.service.js';
 import { appError } from '../../core/utils/appError.js';
 export class EmployeeService {
+  static async getMydetails({
+    userId,
+    organizationId,
+  }: {
+    userId: string;
+    organizationId: string;
+  }) {
+    const data = await prisma.membership.findUnique({
+      where: { organizationId_userId: { userId, organizationId } },
+      include: {
+        department: {
+          select: {
+            name: true,
+          },
+        },
+        role: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+    return data;
+  }
   static async creteEmployee({
     input,
     organizationId,
@@ -24,8 +48,8 @@ export class EmployeeService {
         where: { organizationId_userId: { userId: createdBy, organizationId } },
       });
       managerId = data?.id;
-    }else {
-      managerId = input.managerId
+    } else {
+      managerId = input.managerId;
     }
     let employeeId: string;
 

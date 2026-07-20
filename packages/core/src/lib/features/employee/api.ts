@@ -1,13 +1,23 @@
 import type { FilterOptions } from '@org/web-utils';
 
 import { api } from '../../api.js';
-import { CreateEmployeeInput, EmployeeResponseSchema, MembershipNode } from '@org/zod';
+import {
+  CreateEmployeeInput,
+  EmployeeResponseSchema,
+  MembershipNode,
+} from '@org/zod';
 
 export const employeeApi = {
   createEmployee: async (input: CreateEmployeeInput) => {
     const data = await api.post({
       path: `/employee`,
       data: input,
+    });
+    return data;
+  },
+  getMyDetails: async () => {
+    const data = await api.get<EmployeeResponseSchema>({
+      path: `/employee/me`,
     });
     return data;
   },

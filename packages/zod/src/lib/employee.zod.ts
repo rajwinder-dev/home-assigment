@@ -95,3 +95,21 @@ export type MembershipNode = {
   department: { name: string } | null;
   children: MembershipNode[];
 };
+
+export const employeeMembershipSchema = z.object({
+  id: z.string().uuid(),
+  organizationId: z.string().uuid(),
+  userId: z.string().uuid(),
+  managerId: z.string().uuid(),
+  roleId: z.string().uuid(),
+  departmentId: z.string().uuid(),
+  createdAt: z.coerce.date(),
+  designation: z.string(),
+  salary: z.number().nonnegative(),
+  joiningDate: z.coerce.date(),
+  active: z.boolean(),
+  isSystem: z.boolean(),
+  department: departmentSchema,
+  role: roleSchema,
+});
+export type EmployeeMembershipDetails = z.infer<typeof employeeMembershipSchema>;
