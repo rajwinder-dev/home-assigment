@@ -1,24 +1,4 @@
 services:
-  postgres:
-    image: postgres:15
-    restart: always
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    networks:
-      - prisma-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
-      retries: 20
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    command: postgres -c listen_addresses='*'
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "3"
-
   redis:
     image: redis:alpine
     restart: always
@@ -32,15 +12,14 @@ services:
       context: .
       target: api
     image: rajwindersxxx/employee-management:api
+    restart: always
     env_file:
       - .env
     environment:
       - PORT=3000
       - REDIS_PORT=6379
       - REDIS_HOST=redis
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
-      - DIRECT_URL=postgresql://postgres:postgres@postgres:5432/postgres
-    command: sh -c "pnpm run setup:db && pnpm run start"
+    command: sh -c " pnpm run start"
     healthcheck:
       test:
         [
@@ -51,20 +30,20 @@ services:
     depends_on:
       redis:
         condition: service_started
-      postgres:
-        condition: service_healthy
     networks:
       - prisma-network
 
   email-worker:
     image: rajwindersxxx/ticket-management:email-worker
+    restart: always
     env_file:
       - .env
     environment:
       - REDIS_PORT=6379
       - REDIS_HOST=redis
     depends_on:
-      - redis
+      redis:
+        condition: service_started
     networks:
       - prisma-network # Essential so it can see the redis container
 
@@ -73,8 +52,9 @@ services:
       context: .
       target: web
     image: rajwindersxxx/employee-management:web
+    restart: always
     ports:
-      - "8080:80"
+      - "8081:80"
     depends_on:
       api:
         condition: service_healthy
@@ -85,5 +65,4 @@ networks:
   prisma-network:
 
 volumes:
-  postgres_data:
   redis-data:
